@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class ClimbLadder : MonoBehaviour
 {
-    public bool bDetectedLadder;
-    public static bool bIsClimbingLadder;
+    public bool detectedLadder;
+    public static bool isClimbingLadder;
 
     [SerializeField] private float _climbSpeed;
     [SerializeField] private float _offset = 10f;
@@ -25,7 +25,7 @@ public class ClimbLadder : MonoBehaviour
         _ladder = other.GetComponent<Ladder>();        
         if (_ladder)
         {
-            bDetectedLadder = true;
+            detectedLadder = true;
         }
 
         if(other.gameObject.CompareTag("TopLadder"))
@@ -33,7 +33,7 @@ public class ClimbLadder : MonoBehaviour
             StopClimbing();
         }
 
-        if (other.gameObject.CompareTag("BottomLadder") && bIsClimbingLadder)
+        if (other.gameObject.CompareTag("BottomLadder") && isClimbingLadder)
         {
             StopClimbing();
         }
@@ -44,7 +44,7 @@ public class ClimbLadder : MonoBehaviour
         _ladder = other.GetComponent<Ladder>();
         if (_ladder)
         {
-            bDetectedLadder = false;
+            detectedLadder = false;
         }
     }
 
@@ -53,7 +53,7 @@ public class ClimbLadder : MonoBehaviour
     {
         StartClimbing();
         ClimbMovement();
-        if(Input.GetButtonDown("Jump") && bIsClimbingLadder)
+        if(Input.GetButtonDown("Jump") && isClimbingLadder)
         {
             StopClimbing();
         }
@@ -61,7 +61,7 @@ public class ClimbLadder : MonoBehaviour
 
     private void ClimbMovement()
     {
-        if(bIsClimbingLadder)
+        if(isClimbingLadder)
         {
             float verticalAxis = Input.GetAxisRaw("Vertical");
             _rb.velocity = Vector3.up * _climbSpeed * verticalAxis;
@@ -71,24 +71,19 @@ public class ClimbLadder : MonoBehaviour
 
     private void StartClimbing()
     {
-        if (!_ladder || bIsClimbingLadder) return;
-        if(/*Input.GetKey(KeyCode.D)*/ true)
+        if (!_ladder || isClimbingLadder) return;
+
+        if (detectedLadder)
         {
-            if (bDetectedLadder)
-            {
-                bIsClimbingLadder = true;
-                transform.rotation = Quaternion.LookRotation(_ladder.transform.right, Vector3.up);
-                transform.position = new Vector3(_ladder.bottomLadderTransform.position.x, transform.position.y, _ladder.bottomLadderTransform.position.z);
-                _rb.useGravity = false;
-            }
+            isClimbingLadder = true;
+            transform.rotation = Quaternion.LookRotation(_ladder.transform.right, Vector3.up);
+            transform.position = new Vector3(_ladder.bottomLadderTransform.position.x, transform.position.y, _ladder.bottomLadderTransform.position.z);
+            _rb.useGravity = false;
         }
     }
-
-
-
     private void StopClimbing()
     {
-        bIsClimbingLadder = false;
+        isClimbingLadder = false;
         _rb.useGravity = true;
         _playerMaster.ResetMovementState();
     }

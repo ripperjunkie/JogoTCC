@@ -9,7 +9,6 @@ public class CharacterMovement : MonoBehaviour
 
     [Header("Movement Params")]
     [SerializeField] private float _movSpeed = 20f;
-    [SerializeField] private float _jumpForce = 20f;
     [SerializeField] private float _rotateSpeed = 20f;
     [SerializeField] private float groundSphereRadius = 2f;
     [SerializeField] private LayerMask groudLayerMask;
@@ -31,13 +30,11 @@ public class CharacterMovement : MonoBehaviour
     private void Update()
     {
         Movement();
-        Jump();
-
     }
 
     private void Movement()
     {
-        if (ClimbLadder.bIsClimbingLadder) return;
+        if (ClimbLadder.isClimbingLadder) return;
         if(_rigidbody)
         {
             float horizontalAxis = Input.GetAxisRaw("Horizontal");
@@ -63,34 +60,6 @@ public class CharacterMovement : MonoBehaviour
         }
     }
 
-    [ContextMenu("Jump")]
-    public void Jump()
-    {
-        if(Input.GetButtonDown("Jump") && HitGround())
-        {
-            _rigidbody.AddForce(Vector3.up * _jumpForce, ForceMode.Impulse);            
-        }
-    }
-
-    private void StartSprint()
-    {
-        print("StartSprint");
-    }
-
-    private void StopSprint()
-    {
-        print("StopSprint");
-    }
-
-    private void StartCrouch()
-    {
-        print("StartCrouch");
-    }
-
-    private void StopCrouch()
-    {
-        print("StopCrouch");
-    }
 
     public bool HitGround()
     {
