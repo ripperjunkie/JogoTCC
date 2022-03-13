@@ -17,7 +17,7 @@ public class RopeBehavior : MonoBehaviour
         for (int i = 1; i < nodeAmount; i++)
         {
             position.y -= distanceBetweenNodes;
-            GameObject newNode = Instantiate(node.gameObject, position, transform.rotation);
+            GameObject newNode = Instantiate(node.gameObject, position, transform.rotation, transform);
             newNode.transform.SetParent(transform);
 
             FixedJoint fixedJoint = newNode.GetComponent<FixedJoint>();            
