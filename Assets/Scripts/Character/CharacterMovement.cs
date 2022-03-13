@@ -8,7 +8,7 @@ public class CharacterMovement : MonoBehaviour
     [SerializeField] private Camera _camera;
 
     [Header("Movement Params")]
-    [SerializeField] private float _movSpeed = 20f;
+    public float movSpeed = 20f;
     [SerializeField] private float _rotateSpeed = 20f;
     [SerializeField] private float groundSphereRadius = 2f;
     [SerializeField] private LayerMask groudLayerMask;
@@ -49,7 +49,7 @@ public class CharacterMovement : MonoBehaviour
                 transform.rotation = Quaternion.Euler(0f, angle, 0f);
 
                 Vector3 movDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward; 
-                Vector3 movVector = movDir * _movSpeed;
+                Vector3 movVector = movDir * movSpeed;
                 
                 _rigidbody.velocity = new Vector3(movVector.x, movVector.y + _rigidbody.velocity.y, movVector.z);
             }

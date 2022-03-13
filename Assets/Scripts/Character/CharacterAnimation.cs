@@ -9,16 +9,21 @@ public class CharacterAnimation : MonoBehaviour
     [SerializeField] private float _currentSpeed;
 
     [SerializeField] private float _lerpRigidSpeed = 3f;
-    float _groundLocoSpeed = 0f;
+    private float _groundLocoSpeed = 0f;
+    private PlayerMaster _playerMaster; 
 
     private void Start()
     {
-        
+        _playerMaster = GetComponent<PlayerMaster>();
     }
 
     private void Update()
     {
-        GroundLocomotion();        
+        GroundLocomotion();      
+        if(_animator && _playerMaster)
+        {
+            _animator.SetInteger("anim_state", (int)_playerMaster.movementState);
+        }
     }
 
     private void GroundLocomotion()
@@ -31,6 +36,7 @@ public class CharacterAnimation : MonoBehaviour
             _animator.SetFloat("ground_mov_speed", _groundLocoSpeed);
 
         }
-        print(_rigidbody.velocity.magnitude);
+        //print(_rigidbody.velocity.magnitude);
+
     }
 }
