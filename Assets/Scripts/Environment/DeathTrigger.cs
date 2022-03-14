@@ -1,10 +1,8 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(Collider))]
 public class DeathTrigger : MonoBehaviour
 {
-    private Canvas canvas;
     private void Start()
     {
         
@@ -13,7 +11,7 @@ public class DeathTrigger : MonoBehaviour
     {
         if(other.gameObject.CompareTag("Player"))
         {
-            GameObject.FindObjectOfType<Canvas>().GetComponent<CanvasMaster>().PlayFadeAnimation(true);
+            FindObjectOfType<CanvasFadeAnimation>().PlayFadeOut();
         }
     }
 }
