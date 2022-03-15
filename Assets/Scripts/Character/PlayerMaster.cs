@@ -9,7 +9,12 @@ public class PlayerMaster : MonoBehaviour
     [SerializeField] private bool _isDebug;
     private Rigidbody _rb;
     private CharacterMovement _charMovement;
-    
+
+    private bool _isYoyoActive;
+    private bool _canEquipYoyo = true;
+    public bool GetIsYoyoActive { get => _isYoyoActive; }
+
+
 
     private void Start()
     {
@@ -33,11 +38,37 @@ public class PlayerMaster : MonoBehaviour
                 }
             } 
         }
+        ToggleEquipYoyo();
 
         if(_isDebug)
         {
             print("Movement state: " + movementState);
-        }        
+            print("Yoyo active: " + GetIsYoyoActive);
+        }
+    }
+
+    public void ToggleEquipYoyo()
+    {
+        if(Input.GetKeyDown(KeyCode.Mouse1) && !_isYoyoActive)
+        {
+            EquipYoyo();
+        }
+        if(Input.GetKeyUp(KeyCode.Mouse1) && _isYoyoActive)
+        {
+            UnequipYoyo();
+        }
+    }
+
+    public void EquipYoyo()
+    {
+        if(_canEquipYoyo)
+        {
+            _isYoyoActive = true;
+        }
+    }
+    public void UnequipYoyo()
+    {
+        _isYoyoActive = false;
     }
 
     public void ResetMovementState()

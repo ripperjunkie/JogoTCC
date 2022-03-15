@@ -10,25 +10,28 @@ public class CharacterAnimation : MonoBehaviour
 
     [SerializeField] private float _lerpRigidSpeed = 3f;
     private float _groundLocoSpeed = 0f;
-    private PlayerMaster _playerMaster; 
+    private PlayerMaster _playerMasterRef;
+
 
     private void Start()
     {
-        _playerMaster = GetComponent<PlayerMaster>();
+        _playerMasterRef = GetComponent<PlayerMaster>();
+
     }
+
 
     private void Update()
     {
         GroundLocomotion();      
-        if(_animator && _playerMaster)
+        if(_animator && _playerMasterRef)
         {
-            _animator.SetInteger("anim_state", (int)_playerMaster.movementState);
+            _animator.SetInteger("anim_state", (int)_playerMasterRef.movementState);
+            _animator.SetLayerWeight(1, _ = _playerMasterRef.GetIsYoyoActive ? 1f : 0f);
         }
     }
 
     private void GroundLocomotion()
     {
-
         _groundLocoSpeed = Mathf.Lerp(_animator.GetFloat("ground_mov_speed"), _rigidbody.velocity.magnitude, _lerpRigidSpeed);
         //get character speed
         if (_rigidbody)
@@ -39,4 +42,6 @@ public class CharacterAnimation : MonoBehaviour
         //print(_rigidbody.velocity.magnitude);
 
     }
+
+
 }
