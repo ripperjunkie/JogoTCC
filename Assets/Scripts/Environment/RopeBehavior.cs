@@ -9,7 +9,8 @@ public class RopeBehavior : MonoBehaviour
     public float lastNodeMass = 10f;
     public Rigidbody lastRb;
     private Transform _node;
-    private void Start()
+    public Throw player;
+    private void Awake()
     {
         _node = transform.GetChild(0);
         Vector3 position = transform.position;
@@ -33,9 +34,20 @@ public class RopeBehavior : MonoBehaviour
         
     }
 
+    private void Start()
+    {
+        if(player)
+            transform.rotation = Quaternion.Euler(transform.position - player.transform.position);
+    }
+
     private void Update()
     {
-        
+    }
+
+
+    public void Swing(Vector3 direction)
+    {
+        lastRb.AddForce(direction);
     }
 
 }

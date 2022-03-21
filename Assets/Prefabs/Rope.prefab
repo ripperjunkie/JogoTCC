@@ -194,4 +194,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeAmount: 30
   distanceBetweenNodes: 0.1
-  lastNodeMass: 10
+  lastNodeMass: 3000
+  lastRb: {fileID: 0}
+  player: {fileID: 0}

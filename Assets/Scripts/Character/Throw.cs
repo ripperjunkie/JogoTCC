@@ -11,24 +11,34 @@ public class Throw : MonoBehaviour
     private bool _holdingRope;
     private GameObject newNode;
     [SerializeField] private float force = 100f;
+    private Rigidbody _rb;
+    private CapsuleCollider _capsuleCollider;
+    
 
     private void Start()
     {
         _playerMaster = GetComponent<PlayerMaster>();
         _animator = GetComponent<Animator>();
+        _rb = GetComponent<Rigidbody>();
+        _capsuleCollider = GetComponent<CapsuleCollider>();
     }
 
 
     private void Update()
     {
         TryThrow();
-        if(_holdingRope && newNode)
+        if(_holdingRope)
         {
-            //Rigidbody rb = newNode.GetComponent<RopeBehavior>().lastRb;
-            //if(rb)
-            //{
-            //    rb.AddForce((transform.position - rb.transform.position) * force);
-            //}
+            RopeBehavior rope = newNode.GetComponent<RopeBehavior>();
+            transform.position = rope.lastRb.transform.position;
+        }
+        RopeSwing();
+
+        if(_holdingRope && Input.GetKeyUp(KeyCode.Mouse0))
+        {
+            _holdingRope = false;
+            DetachToRope();
+            Destroy(newNode);
         }
     }
 
@@ -62,34 +72,58 @@ public class Throw : MonoBehaviour
                 _animator.SetTrigger("Throw");
 
                 //Spawn rope
-                SpawnRope();
-                _holdingRope = true;
-
-
-                //Disable collision
-                //Add fixed joint
-                //Get last point and attach to fixed joint rigidbody
+                newNode = Instantiate(ropePrefab, _ropePoint.tether.transform.position, transform.rotation);
+                newNode.GetComponent<RopeBehavior>().player = this;
+                AttachToRope();
             }
         }
-        else if(Input.GetKeyUp(KeyCode.Mouse0))
+
+
+    }
+
+    public void AttachToRope()
+    {
+        _holdingRope = true;
+
+        if (_capsuleCollider)
         {
-            _holdingRope = false;
-            Destroy(newNode);
+            _capsuleCollider.enabled = false;
         }
 
+        if (_rb)
+        {
+            _rb.useGravity = false;
+            _rb.velocity = Vector3.zero;
+        }
     }
 
-    public void SpawnRope()
+    public void DetachToRope()
     {
-        if (!_ropePoint) return;
-        print("SpawnRope");
-        newNode = Instantiate(ropePrefab, _ropePoint.tether.transform.position, transform.rotation);
-
-        //FixedJoint joint = gameObject.AddComponent<FixedJoint>();
-        //Rigidbody rb = newNode.GetComponent<RopeBehavior>().lastRb;
-        //if (joint && rb)
-        //{
-        //    joint.connectedBody = rb;
-        //}
+        _holdingRope = false;
+        if (_rb)
+        {
+            _rb.useGravity = true;
+        }
+        if (_capsuleCollider)
+        {
+            _capsuleCollider.enabled = true;
+        }
     }
+
+    public void RopeSwing()
+    {
+        if(_holdingRope && newNode)
+        {
+            float horizontalAxis = Input.GetAxisRaw("Horizontal");
+            float verticalAxis = Input.GetAxisRaw("Vertical");
+
+            Vector3 dir = new Vector3(horizontalAxis, 0f, verticalAxis);
+
+            if (dir.magnitude >= 0.1f)
+            {
+               newNode.GetComponent<RopeBehavior>().Swing(transform.forward * force + (-transform.up * 10f));
+            }
+        }
+    }
+
 }
