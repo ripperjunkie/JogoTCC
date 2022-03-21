@@ -3,11 +3,14 @@ using UnityEngine.Events;
 
 public class Throw : MonoBehaviour
 {
+    public GameObject ropePrefab;
     private PlayerMaster _playerMaster;
     private Animator _animator;
-    private bool _canThrow;
-    public GameObject ropePrefab;
     private RopePoint _ropePoint;
+    private bool _canThrow;
+    private bool _holdingRope;
+    private GameObject newNode;
+    [SerializeField] private float force = 100f;
 
     private void Start()
     {
@@ -19,6 +22,14 @@ public class Throw : MonoBehaviour
     private void Update()
     {
         TryThrow();
+        if(_holdingRope && newNode)
+        {
+            //Rigidbody rb = newNode.GetComponent<RopeBehavior>().lastRb;
+            //if(rb)
+            //{
+            //    rb.AddForce((transform.position - rb.transform.position) * force);
+            //}
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -52,10 +63,18 @@ public class Throw : MonoBehaviour
 
                 //Spawn rope
                 SpawnRope();
+                _holdingRope = true;
+
+
                 //Disable collision
                 //Add fixed joint
                 //Get last point and attach to fixed joint rigidbody
             }
+        }
+        else if(Input.GetKeyUp(KeyCode.Mouse0))
+        {
+            _holdingRope = false;
+            Destroy(newNode);
         }
 
     }
@@ -64,6 +83,13 @@ public class Throw : MonoBehaviour
     {
         if (!_ropePoint) return;
         print("SpawnRope");
-        GameObject newNode = Instantiate(ropePrefab, _ropePoint.tether.transform.position, transform.rotation);
+        newNode = Instantiate(ropePrefab, _ropePoint.tether.transform.position, transform.rotation);
+
+        //FixedJoint joint = gameObject.AddComponent<FixedJoint>();
+        //Rigidbody rb = newNode.GetComponent<RopeBehavior>().lastRb;
+        //if (joint && rb)
+        //{
+        //    joint.connectedBody = rb;
+        //}
     }
 }

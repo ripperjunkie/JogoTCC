@@ -28,6 +28,10 @@ public class CharacterAnimation : MonoBehaviour
             _animator.SetInteger("anim_state", (int)_playerMasterRef.movementState);
             _animator.SetLayerWeight(1, _ = _playerMasterRef.GetIsYoyoActive ? 1f : 0f);
         }
+        if (_rigidbody)
+        {
+            _animator.SetFloat("vertical_speed", _rigidbody.velocity.y);
+        }
     }
 
     private void GroundLocomotion()
@@ -37,7 +41,6 @@ public class CharacterAnimation : MonoBehaviour
         if (_rigidbody)
         {
             _animator.SetFloat("ground_mov_speed", _groundLocoSpeed);
-
         }
         //print(_rigidbody.velocity.magnitude);
 
