@@ -64,7 +64,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 50e6b9d1823b86a45ad84fd42de47a3e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -194,6 +194,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeAmount: 30
   distanceBetweenNodes: 0.1
-  lastNodeMass: 3000
+  lastNodeMass: 10000
   lastRb: {fileID: 0}
   player: {fileID: 0}
