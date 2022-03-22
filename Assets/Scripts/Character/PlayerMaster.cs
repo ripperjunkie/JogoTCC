@@ -26,7 +26,7 @@ public class PlayerMaster : MonoBehaviour
     {
         if(_rb)
         {
-            if(movementState != EMovementState.SWINGING && movementState != EMovementState.CLIMBING && movementState != EMovementState.CROUCHING)
+            if(movementState != EMovementState.SWINGING && movementState != EMovementState.CLIMBING && movementState != EMovementState.CROUCHING && movementState != EMovementState.BALANCING)
             {
                 if (_rb.velocity.magnitude != 0f && _charMovement.HitGround())
                 {
@@ -89,6 +89,11 @@ public class PlayerMaster : MonoBehaviour
     public void SetClimbing()
     {
         movementState = EMovementState.CLIMBING;
+    }
+
+    public void SetBalacing()
+    {
+        movementState = EMovementState.BALANCING;
     }
 
 

@@ -8,5 +8,6 @@ public enum EMovementState
     SPRINTING,
     INAIR,
     SWINGING,
-    CROUCHING
+    CROUCHING,
+    BALANCING
 }

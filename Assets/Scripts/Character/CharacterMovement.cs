@@ -12,6 +12,7 @@ public class CharacterMovement : MonoBehaviour
     [SerializeField] private float _rotateSpeed = 20f;
     [SerializeField] private float groundSphereRadius = 2f;
     [SerializeField] private LayerMask groudLayerMask;
+    [SerializeField] private LayerMask brigeLayerMask;
 
     [Header("Debug")]
     [SerializeField] private bool bDebugGizmos;
@@ -65,6 +66,11 @@ public class CharacterMovement : MonoBehaviour
     {
         Ray ray = new Ray(transform.position, Vector3.down);
         return Physics.CheckSphere(transform.position, groundSphereRadius, groudLayerMask);
+    }
+    public bool HitBrige()
+    {
+        Ray ray = new Ray(transform.position, Vector3.down);
+        return Physics.CheckSphere(transform.position, groundSphereRadius, brigeLayerMask);
     }
 
     private void OnDrawGizmos()
