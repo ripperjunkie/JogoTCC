@@ -29,7 +29,7 @@ public class MoveObjects : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetKey(KeyCode.LeftShift) && !bOnMove && bOnCollsion)
+        if(Input.GetKey(KeyCode.Mouse0) && !bOnMove && bOnCollsion)
         {        
           bOnMove = true;
         }
@@ -45,7 +45,7 @@ public class MoveObjects : MonoBehaviour
     { 
       if(bOnMove)
       {
-       objectMove.transform.position = Vector3.MoveTowards(player.transform.position, player.transform.position, 2);
+       objectMove.transform.position = Vector3.MoveTowards(player.transform.position, player.transform.position, 1);
       }
 
     }
