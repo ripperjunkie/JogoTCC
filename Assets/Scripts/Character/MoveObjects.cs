@@ -4,49 +4,53 @@ using UnityEngine;
 
 public class MoveObjects : MonoBehaviour
 {
-  public bool bOnMove = false;
-  public  bool bOnCollsion = false;
-  public GameObject objectMove = null;
-  public GameObject player = null;
-  
+   private CharacterMovement _player = null;
+   private bool bOnCollsion;
+   private Rigidbody _rBBox = null;
+   public float force = 0;
+   public float SpeedPlayer = 0;
+   private float SpeedInitial = 0;
+    private Vector3 _forceD;
+    private bool _active = false;
+   void Start()
+   {
+     _player = GetComponentInParent<CharacterMovement>();
+     SpeedInitial = _player.movSpeed;
+   }
+
   void OnTriggerEnter(Collider col)
   {
-      if(col.gameObject.CompareTag("Box"))
+       if(col.gameObject.CompareTag("Finish"))
       {
+        _rBBox = col.GetComponent<Rigidbody>();
         bOnCollsion = true;
-        objectMove = col.gameObject;
-      }   
+       }
   }
-  void OnTriggerExit(Collider col)
-  {
-    if(col.gameObject.CompareTag("Box"))
+  void FixedUpdate()
     {
-        bOnCollsion = false;
-        objectMove = null;
-    }
+       _forceD = new Vector3(Input.GetAxis("Horizontal"), 0 ,Input.GetAxis("Vertical"));
 
-  }
-
-    void Update()
-    {
-        if(Input.GetKey(KeyCode.Mouse0) && !bOnMove && bOnCollsion)
+        if(Input.GetKeyDown(KeyCode.E) && bOnCollsion && !_active)
         {        
-          bOnMove = true;
+           _active = true;
         }
-        else
-        {
-          bOnMove = false;
+         else if(Input.GetKeyDown(KeyCode.E) && bOnCollsion && _active)
+        {        
+           _active = false;
+           _player.movSpeed = SpeedInitial;
+           _rBBox = null;
+           bOnCollsion = false;
         }
 
-        MovingObject();
+         Move();              
     }
-
-    void MovingObject()
-    { 
-      if(bOnMove)
-      {
-       objectMove.transform.position = Vector3.MoveTowards(player.transform.position, player.transform.position, 1);
-      }
-
+    void Move()
+    {
+      if(_active){
+        _player.movSpeed = SpeedPlayer;
+        _forceD.y = 0;
+        _forceD.Normalize();
+        _rBBox.AddForce(_forceD * force, ForceMode.Impulse);   
+      }   
     }
 }
