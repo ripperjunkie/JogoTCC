@@ -32,10 +32,10 @@ public class PushLever : MonoBehaviour
   }
   void Update()
   {
-    if(Input.GetKeyDown(KeyCode.Mouse1) && active)
+    if(Input.GetKeyDown(KeyCode.E) && active)
       {
+         ChangeRoute();
          StartCoroutine(ActiveLever());
-         GG();
       }
   }
 
@@ -43,23 +43,23 @@ public class PushLever : MonoBehaviour
   {
       if(begin)
       {
-        while(Vector3.Distance(plataform.transform.position, EndPoint.transform.position) > 1)
+        while(Vector3.Distance(plataform.transform.position, EndPoint.transform.position) > 0)
           {
-            plataform.transform.position =  Vector3.MoveTowards(plataform.transform.position,EndPoint.transform.position, speedPlataform* Time.deltaTime);
+            plataform.transform.Translate(Vector3.Lerp(plataform.transform.position,EndPoint.transform.position, speedPlataform* Time.deltaTime));         
               yield return new WaitForSeconds(0.02f);
           }
       }
    
       else 
       {
-          while(Vector3.Distance(plataform.transform.position, initialPoint) > 1)
+          while(Vector3.Distance(plataform.transform.position, initialPoint) > 0)
         {
-            plataform.transform.position = Vector3.MoveTowards(plataform.transform.position, initialPoint, speedPlataform * Time.deltaTime);
-              yield return new WaitForSeconds(0.02f);
+          plataform.transform.position = Vector3.Lerp(plataform.transform.position, initialPoint, speedPlataform * Time.deltaTime);       
+           yield return new WaitForSeconds(0.02f);
         }
       }
   }
-  void GG()
+  void ChangeRoute()
   {
     if(begin)
     {
