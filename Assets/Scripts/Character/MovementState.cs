@@ -9,5 +9,6 @@ public enum EMovementState
     INAIR,
     SWINGING,
     CROUCHING,
-    BALANCING
+    BALANCING,
+    RIDING
 }
