@@ -1751,7 +1751,6 @@ GameObject:
   - component: {fileID: 7915954509333265792}
   - component: {fileID: 7915954509333265806}
   - component: {fileID: 7915954509333265795}
-  - component: {fileID: 7915954509333265798}
   - component: {fileID: 7915954509333265799}
   - component: {fileID: 7915954509333265797}
   - component: {fileID: 7915954509333265850}
@@ -1954,12 +1953,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _camera: {fileID: 0}
-  _movSpeed: 4
+  movSpeed: 20
   _rotateSpeed: 0.1
   groundSphereRadius: 0.2
   groudLayerMask:
     serializedVersion: 2
     m_Bits: 8
+  brigeLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
   bDebugGizmos: 0
 --- !u!114 &7915954509333265795
 MonoBehaviour:
@@ -1977,22 +1979,6 @@ MonoBehaviour:
   _rigidbody: {fileID: 7915954509333265794}
   _currentSpeed: 0
   _lerpRigidSpeed: 0.1
---- !u!114 &7915954509333265798
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7915954509333265801}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1c85fdbae1a0517438a7032f1d68524c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 0}
-  armLength: 100
-  swingDir: {x: 0, y: 0, z: 0}
-  swingForce: 1000
 --- !u!114 &7915954509333265799
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2035,7 +2021,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _crouchCapsuleHeight: 1.29
-  _defaultCapsuleHeight: 0
+  _crouchSpeed: 0
 --- !u!114 &7915954509333265851
 MonoBehaviour:
   m_ObjectHideFlags: 0
