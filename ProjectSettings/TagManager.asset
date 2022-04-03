@@ -8,6 +8,9 @@ TagManager:
   - BottomLadder
   - UpdateCamera
   - ThrowArea
+  - SoundRange
+  - SoundRange1
+  - SoundRange2
   layers:
   - Default
   - TransparentFX
