@@ -785,6 +785,8 @@ GameObject:
   - component: {fileID: 2563513427972834326}
   - component: {fileID: 175883476226587089}
   - component: {fileID: 2208060934471260811}
+  - component: {fileID: 1990216915343479665}
+  - component: {fileID: 6209090518370182190}
   m_Layer: 0
   m_Name: YoyoDetection
   m_TagString: Untagged
@@ -883,6 +885,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _debugCollider: 0
+--- !u!114 &1990216915343479665
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2334683741819078709}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5007f6b0359a53b41a235e4c483b88d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  force: 15
+  SpeedPlayer: 0.3
+--- !u!114 &6209090518370182190
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2334683741819078709}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 294b813dc0f67bd429c50371b72ef33f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2392648349498733199
 GameObject:
   m_ObjectHideFlags: 0
@@ -1898,7 +1926,6 @@ GameObject:
   - component: {fileID: 7915954509333265797}
   - component: {fileID: 7915954509333265850}
   - component: {fileID: 7915954509333265851}
-  - component: {fileID: 8125001997079066343}
   - component: {fileID: 3528953713060751067}
   - component: {fileID: 2347474469819034483}
   - component: {fileID: 1523995453032895848}
@@ -2281,20 +2308,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _jumpForce: 5.34
---- !u!114 &8125001997079066343
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7915954509333265801}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5007f6b0359a53b41a235e4c483b88d5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  force: 9
-  SpeedPlayer: 5
 --- !u!114 &3528953713060751067
 MonoBehaviour:
   m_ObjectHideFlags: 0

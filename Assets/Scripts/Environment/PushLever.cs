@@ -5,6 +5,7 @@ using UnityEngine;
 public class PushLever : MonoBehaviour
 {
   public GameObject plataform = null;
+  public GameObject player = null;
   public  Transform EndPoint;
   private Vector3 initialPoint;
   public float speedPlataform = 0;
@@ -17,16 +18,18 @@ public class PushLever : MonoBehaviour
     }
    void OnTriggerEnter(Collider col)
   {
-      if(col.gameObject.CompareTag("Player"))
+      if(col.gameObject == player)
       {
-         active= true;        
+         active= true;
+         player.transform.parent = transform;        
       }   
   }
   void OnTriggerExit(Collider col)
   {
-    if(col.gameObject.CompareTag("Player"))
+    if(col.gameObject == player)
     {
-       active= false;   
+       active= false;  
+        player.transform.parent = null;   
     }
 
   }
