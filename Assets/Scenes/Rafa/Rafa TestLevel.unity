@@ -20659,6 +20659,11 @@ PrefabInstance:
       propertyPath: tether
       value: 
       objectReference: {fileID: 1105588170}
+    - target: {fileID: 885703518291728232, guid: 97929bdc95cab9c43abd36ebd7710484,
+        type: 3}
+      propertyPath: pointType
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 885703518291728235, guid: 97929bdc95cab9c43abd36ebd7710484,
         type: 3}
       propertyPath: m_Name
