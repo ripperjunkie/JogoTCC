@@ -7,8 +7,6 @@ public class PickUpObjects : MonoBehaviour
  private bool bOnMove = false;
  private  bool bOnCollsion = false;
  private GameObject _arms = null;
- 
- [SerializeField]
  private GameObject _objectMove = null;
 
  void Start()
@@ -52,7 +50,11 @@ public class PickUpObjects : MonoBehaviour
       if(bOnMove && _objectMove)
       {
          _objectMove.GetComponent<Rigidbody>().useGravity = false;
-         _objectMove.transform.position = Vector3.MoveTowards(_arms.transform.position, _arms.transform.position, 1);
+     //    while (Vector3.dis)
+      //   {
+             _objectMove.transform.position = Vector3.MoveTowards(_arms.transform.position, _arms.transform.position, 1);
+      //   }
+       
       }
     }
     void DropObject()

@@ -45,7 +45,7 @@ public class PushLever : MonoBehaviour
       {
         while(Vector3.Distance(plataform.transform.position, EndPoint.transform.position) > 0)
           {
-            plataform.transform.Translate(Vector3.Lerp(plataform.transform.position,EndPoint.transform.position, speedPlataform* Time.deltaTime));         
+            plataform.transform.position =Vector3.Lerp(plataform.transform.position,EndPoint.transform.position, speedPlataform* Time.deltaTime);         
               yield return new WaitForSeconds(0.02f);
           }
       }

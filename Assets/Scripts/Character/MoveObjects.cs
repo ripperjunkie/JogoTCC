@@ -10,22 +10,24 @@ public class MoveObjects : MonoBehaviour
    public float force = 0;
    public float SpeedPlayer = 0;
    private float SpeedInitial = 0;
-    private Vector3 _forceD;
-    private bool _active = false;
+   private Vector3 _forceD;
+   private bool _active = false;
+
    void Start()
    {
      _player = GetComponentInParent<CharacterMovement>();
      SpeedInitial = _player.movSpeed;
    }
 
-  void OnTriggerEnter(Collider col)
+  void OnCollisionEnter(Collision col)
   {
-       if(col.gameObject.CompareTag("Finish"))
+       if(col.gameObject.CompareTag("BoxMove"))
       {
-        _rBBox = col.GetComponent<Rigidbody>();
+        _rBBox = col.gameObject.GetComponent<Rigidbody>();
         bOnCollsion = true;
        }
   }
+
   void FixedUpdate()
     {
        _forceD = new Vector3(Input.GetAxis("Horizontal"), 0 ,Input.GetAxis("Vertical"));
@@ -44,6 +46,7 @@ public class MoveObjects : MonoBehaviour
 
          Move();              
     }
+
     void Move()
     {
       if(_active){

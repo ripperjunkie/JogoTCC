@@ -11,6 +11,8 @@ TagManager:
   - SoundRange
   - SoundRange1
   - SoundRange2
+  - Box
+  - BoxMove
   layers:
   - Default
   - TransparentFX
