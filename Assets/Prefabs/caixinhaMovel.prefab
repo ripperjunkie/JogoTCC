@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 2217954267506152287}
   - component: {fileID: 2217954267506152256}
   - component: {fileID: 2217954267506152284}
-  - component: {fileID: 2217954267506152283}
   m_Layer: 0
   m_Name: caixinhaMovel
   m_TagString: Box
@@ -115,16 +114,3 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
---- !u!135 &2217954267506152283
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2217954267506152257}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 1
-  m_Center: {x: 0, y: 0, z: 0}

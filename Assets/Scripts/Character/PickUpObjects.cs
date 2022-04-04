@@ -27,7 +27,6 @@ public class PickUpObjects : MonoBehaviour
       if(col.gameObject.CompareTag("Box"))
       {
         bOnCollsion = false;
-        _objectMove = null;
       }    
   }
 
@@ -50,11 +49,7 @@ public class PickUpObjects : MonoBehaviour
       if(bOnMove && _objectMove)
       {
          _objectMove.GetComponent<Rigidbody>().useGravity = false;
-     //    while (Vector3.dis)
-      //   {
-             _objectMove.transform.position = Vector3.MoveTowards(_arms.transform.position, _arms.transform.position, 1);
-      //   }
-       
+         _objectMove.transform.position = Vector3.MoveTowards(_arms.transform.position, _arms.transform.position, 1);      
       }
     }
     void DropObject()

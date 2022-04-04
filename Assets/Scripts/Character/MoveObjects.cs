@@ -19,12 +19,19 @@ public class MoveObjects : MonoBehaviour
      SpeedInitial = _player.movSpeed;
    }
 
-  void OnCollisionEnter(Collision col)
+  void OnTriggerEnter(Collider col)
   {
        if(col.gameObject.CompareTag("BoxMove"))
       {
         _rBBox = col.gameObject.GetComponent<Rigidbody>();
         bOnCollsion = true;
+       }
+  }
+    void OnTriggerExit(Collider col)
+  {
+       if(col.gameObject.CompareTag("BoxMove"))
+      {
+        bOnCollsion = false;
        }
   }
 
@@ -36,12 +43,11 @@ public class MoveObjects : MonoBehaviour
         {        
            _active = true;
         }
-         else if(Input.GetKeyDown(KeyCode.E) && bOnCollsion && _active)
+         else if(Input.GetKeyDown(KeyCode.E) && _active)
         {        
            _active = false;
            _player.movSpeed = SpeedInitial;
            _rBBox = null;
-           bOnCollsion = false;
         }
 
          Move();              
@@ -49,7 +55,7 @@ public class MoveObjects : MonoBehaviour
 
     void Move()
     {
-      if(_active){
+      if(_active && _rBBox){
         _player.movSpeed = SpeedPlayer;
         _forceD.y = 0;
         _forceD.Normalize();
