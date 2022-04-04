@@ -2,11 +2,15 @@ using UnityEngine;
 
 public class Swing : MonoBehaviour
 {
+    public bool holdingRope;
+    public ConfigurableJoint configurableJoint;
+
     [SerializeField] private float swingForce = 100f;
     [SerializeField] private float lerpSwingRopeTime = 10f;
     [SerializeField] private float desiredRopeLength;
     [SerializeField] private float offsetRenderRope;
     [SerializeField] private float airSpeed;
+    [SerializeField] private bool _debug;
 
 
     private PlayerMaster _playerMaster;
@@ -15,9 +19,7 @@ public class Swing : MonoBehaviour
     private Vector3 _ropePointLocation;
     private Rigidbody _rb;
     private bool _canThrow;
-    private bool _holdingRope;
     private float currentRopeLength; //we'll lerp the rope length
-    private ConfigurableJoint joint;
     private LineRenderer _yoyoRopeRenderer;
 
 
@@ -33,27 +35,44 @@ public class Swing : MonoBehaviour
     private void Update()
     {
         TryThrow();
-        RopeSwing();
+        RopeControl();
         OnRope();
-        DetachToRope();
+        if(Input.GetButtonDown("Jump"))
+        {
+            DetachRope();
+        }
+
         InAirControl();
+        if(_debug)
+        {
+            print("holdingRope: " + holdingRope);
+        }
+        
     }
 
     private void OnTriggerEnter(Collider other)
     {        
         RopePoint ropePoint = other.GetComponent<RopePoint>();
-        if (ropePoint)
+        if (ropePoint && ropePoint.pointType != EPointType.NONE)
         {
             _canThrow = true;
             _ropePoint = ropePoint;
             _ropePointLocation = ropePoint.rb.transform.position;
+        }
+
+        ExitRappel exitRappel = other.GetComponent<ExitRappel>();
+        if(exitRappel)
+        {
+            DetachRope();
+            if(exitRappel.teleportPoint)
+                transform.position = exitRappel.teleportPoint.transform.position;
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
         RopePoint ropePoint = other.GetComponent<RopePoint>();
-        if (ropePoint)
+        if (ropePoint && ropePoint.pointType != EPointType.NONE)
         {
             _canThrow = false;
             _ropePoint = null;
@@ -62,46 +81,67 @@ public class Swing : MonoBehaviour
 
     public void TryThrow()
     {
-        if (!_playerMaster || !_animator || !_ropePoint || _holdingRope) return;
+        if (!_playerMaster || !_animator || !_ropePoint || holdingRope) return;
         if(Input.GetKeyDown(KeyCode.Mouse0) && _playerMaster.movementState == EMovementState.INAIR)
         {
             if (_playerMaster.GetIsYoyoActive && _canThrow)
             {
                 _animator.SetTrigger("Throw");
-                _playerMaster.movementState = EMovementState.SWINGING;
-                _holdingRope = true;
+                
+                holdingRope = true;
 
                 transform.rotation = Quaternion.Euler(0f, 90f, 0f);
                 _rb.freezeRotation = false;
                 float distance = Vector3.Distance(transform.position, _ropePoint.rb.transform.position);
                 currentRopeLength = distance;
-                joint = gameObject.AddComponent<ConfigurableJoint>();
-                joint.autoConfigureConnectedAnchor = false;
-                joint.connectedBody = _ropePoint.rb;
-                joint.anchor = new Vector3(0f, 5f, 0f);
-                joint.xMotion = ConfigurableJointMotion.Limited;
-                joint.yMotion = ConfigurableJointMotion.Limited;
-                joint.zMotion = ConfigurableJointMotion.Limited;
-                joint.angularXMotion = ConfigurableJointMotion.Free;
-                joint.angularYMotion = ConfigurableJointMotion.Limited;
-                joint.angularZMotion = ConfigurableJointMotion.Limited;
+                configurableJoint = gameObject.AddComponent<ConfigurableJoint>();
+                configurableJoint.autoConfigureConnectedAnchor = false;
+                configurableJoint.connectedBody = _ropePoint.rb;
+                configurableJoint.anchor = new Vector3(0f, 5f, 0f);
+                configurableJoint.xMotion = ConfigurableJointMotion.Limited;
+                configurableJoint.yMotion = ConfigurableJointMotion.Limited;
+                configurableJoint.zMotion = ConfigurableJointMotion.Limited;
+
+                switch(_ropePoint.pointType)
+                {
+                    case EPointType.SWING:
+                        {
+                            _playerMaster.movementState = EMovementState.SWINGING;
+                            configurableJoint.angularXMotion = ConfigurableJointMotion.Free;
+                            configurableJoint.angularYMotion = ConfigurableJointMotion.Limited;
+                            configurableJoint.angularZMotion = ConfigurableJointMotion.Limited;
+                        }
+
+
+                        break;
+                    case EPointType.RAPPEl:
+                        {
+                            _playerMaster.movementState = EMovementState.RAPPEL;
+                            configurableJoint.angularXMotion = ConfigurableJointMotion.Locked;
+                            configurableJoint.angularYMotion = ConfigurableJointMotion.Locked;
+                            configurableJoint.angularZMotion = ConfigurableJointMotion.Locked;
+                        }
+
+                        break;
+                }
+
 
                 SoftJointLimit softX = new SoftJointLimit();
                 softX.limit = -86f;
-                joint.lowAngularXLimit = softX;
+                configurableJoint.lowAngularXLimit = softX;
                 SoftJointLimit softY = new SoftJointLimit();
                 softY.limit = 176f;
-                joint.highAngularXLimit = softY;
-                joint.enableCollision = true;
+                configurableJoint.highAngularXLimit = softY;
+                configurableJoint.enableCollision = true;
             }
         }
     }
     private void OnCollisionEnter(Collision collision)
     {
         //Reset rotation
-        if(collision.gameObject.layer == 3 /*ground*/)
+        if(collision.gameObject.layer == 3 /* 3 = ground */)
         {
-            if (_playerMaster.movementState == EMovementState.SWINGING)
+            if (_playerMaster.movementState == EMovementState.SWINGING || _playerMaster.movementState == EMovementState.RAPPEL)
             {
                 transform.rotation = Quaternion.Euler(0f, 0f, 0f);
                 _rb.freezeRotation = true;
@@ -111,20 +151,24 @@ public class Swing : MonoBehaviour
 
     }
 
-    public void DetachToRope()
+    public void DetachRope()
     {
-        if (_holdingRope && Input.GetKeyUp(KeyCode.Mouse0))
+        if (holdingRope)
         {
-            _holdingRope = false;
-            GetComponent<ConfigurableJoint>().breakForce = 0f;
+            holdingRope = false;
+            if(GetComponent<ConfigurableJoint>())
+            {
+                Destroy(GetComponent<ConfigurableJoint>());
+            }            
             _yoyoRopeRenderer.enabled = false;
+            _rb.freezeRotation = true;
         }
     }
 
-    public void RopeSwing()
+    public void RopeControl()
     {
         float horizontalAxis = Input.GetAxisRaw("Horizontal");
-        if (_rb && _holdingRope)
+        if (_rb && holdingRope)
         {
             Vector3 force = new Vector3(horizontalAxis * swingForce, 0f, 0f);
             if (force.magnitude != 0.0f)
@@ -134,7 +178,7 @@ public class Swing : MonoBehaviour
 
     public void OnRope()
     {
-        if (_holdingRope)
+        if (holdingRope)
         {
            // currentRopeLength = Mathf.Lerp(currentRopeLength, desiredRopeLength, Time.deltaTime * lerpSwingRopeTime);
            // joint.anchor = new Vector3(0f, currentRopeLength, 0f);
@@ -150,9 +194,10 @@ public class Swing : MonoBehaviour
         }
     }
 
+
     public void InAirControl()
     {
-        if(_playerMaster.movementState == EMovementState.SWINGING && !_holdingRope)
+        if(_playerMaster.movementState == EMovementState.SWINGING && !holdingRope)
         {
             if (_rb)
             {

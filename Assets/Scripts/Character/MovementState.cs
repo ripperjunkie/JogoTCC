@@ -10,5 +10,6 @@ public enum EMovementState
     SWINGING,
     CROUCHING,
     BALANCING,
-    RIDING
+    RIDING,
+    RAPPEL
 }
