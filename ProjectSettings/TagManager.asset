@@ -13,6 +13,7 @@ TagManager:
   - SoundRange2
   - Box
   - BoxMove
+  - Destructible
   layers:
   - Default
   - TransparentFX
