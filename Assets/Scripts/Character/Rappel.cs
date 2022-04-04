@@ -20,7 +20,7 @@ public class Rappel : MonoBehaviour
 
     private void RopeControl()
     {
-        if (!_swing ) return;
+        if (!_swing || _playerMaster.movementState != EMovementState.RAPPEL) return;
         float verticalAxis = Input.GetAxisRaw("Vertical");      
 
 

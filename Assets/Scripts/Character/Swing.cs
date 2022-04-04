@@ -163,6 +163,10 @@ public class Swing : MonoBehaviour
             _yoyoRopeRenderer.enabled = false;
             _rb.freezeRotation = true;
         }
+        if(_playerMaster.movementState == EMovementState.RAPPEL)
+        {
+            _playerMaster.ResetMovementState();
+        }
     }
 
     public void RopeControl()

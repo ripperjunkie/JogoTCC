@@ -33,7 +33,7 @@ public class CharacterAnimation : MonoBehaviour
             _animator.SetFloat("vertical_speed", _rigidbody.velocity.y);
         }
 
-        print("Yoyo active?" + _playerMasterRef.GetIsYoyoActive);
+        //print("Yoyo active?" + _playerMasterRef.GetIsYoyoActive);
     }
 
     private void GroundLocomotion()

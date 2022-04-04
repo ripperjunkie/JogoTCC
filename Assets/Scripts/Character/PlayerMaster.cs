@@ -26,7 +26,9 @@ public class PlayerMaster : MonoBehaviour
     {
         if(_rb)
         {
-            if(movementState != EMovementState.SWINGING && movementState != EMovementState.CLIMBING && movementState != EMovementState.CROUCHING && movementState != EMovementState.BALANCING && movementState != EMovementState.RIDING)
+            if(movementState != EMovementState.SWINGING && movementState != EMovementState.CLIMBING && 
+                movementState != EMovementState.CROUCHING && movementState != EMovementState.BALANCING && 
+                movementState != EMovementState.RIDING && movementState != EMovementState.RAPPEL)
             {
                 if (_rb.velocity.magnitude != 0f && _charMovement.HitGround())
                 {
