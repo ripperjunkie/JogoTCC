@@ -11,7 +11,7 @@ private Vector3 initialPoint;
   public bool active = false;
    public bool begin = false;
    public float speedPlataform = 0;
-   void OnTriggerEnter(Collider col)
+   void OnTriggerStay(Collider col)
   {
       if(col.gameObject == player)
       {
@@ -28,35 +28,35 @@ private Vector3 initialPoint;
     }
 
   }
-    public IEnumerator ActiveLever()
-  {
-      if(begin)
-      {
-        while(Vector3.Distance(plataform.transform.position, EndPoint.transform.position) > 0)
-          {
-            plataform.transform.position =Vector3.Lerp(plataform.transform.position,EndPoint.transform.position, speedPlataform* Time.deltaTime);         
-              yield return new WaitForSeconds(0.02f);
-          }
-      }
+  //  public IEnumerator ActiveLever()
+  //{
+  //    //if(begin)
+  //    //{
+  //    //  while(Vector3.Distance(plataform.transform.position, EndPoint.transform.position) > 0)
+  //    //    {
+  //    //      plataform.transform.position =Vector3.Lerp(plataform.transform.position,EndPoint.transform.position, speedPlataform* Time.deltaTime);         
+  //    //        yield return new WaitForSeconds(0.02f);
+  //    //    }
+  //    //}
    
-      else 
-      {
-          while(Vector3.Distance(plataform.transform.position, initialPoint) > 0)
-        {
-          plataform.transform.position = Vector3.Lerp(plataform.transform.position, initialPoint, speedPlataform * Time.deltaTime);       
-           yield return new WaitForSeconds(0.02f);
-        }
-      }
-  }
+  //    //else 
+  //    //{
+  //    //    while(Vector3.Distance(plataform.transform.position, initialPoint) > 0)
+  //    //  {
+  //    //    plataform.transform.position = Vector3.Lerp(plataform.transform.position, initialPoint, speedPlataform * Time.deltaTime);       
+  //    //     yield return new WaitForSeconds(0.02f);
+  //    //  }
+  //    //}
+  //}
  public void ChangeRoute()
   {
-    if(begin)
-    {
-      begin = false;
-    }
-    else
-    {
-      begin = true;
-    }
+    //if(begin)
+    //{
+    //  begin = false;
+    //}
+    //else
+    //{
+    //  begin = true;
+    //}
   }
 }

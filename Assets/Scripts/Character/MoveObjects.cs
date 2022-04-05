@@ -39,11 +39,11 @@ public class MoveObjects : MonoBehaviour
     {
        _forceD = new Vector3(Input.GetAxis("Horizontal"), 0 ,Input.GetAxis("Vertical"));
 
-        if(Input.GetKeyDown(KeyCode.E) && bOnCollsion && !_active)
+        if(Input.GetKey(KeyCode.E) && bOnCollsion && !_active)
         {        
            _active = true;
         }
-         else if(Input.GetKeyDown(KeyCode.E) && _active)
+         else if(Input.GetKey(KeyCode.E) && _active)
         {        
            _active = false;
            _player.movSpeed = SpeedInitial;
