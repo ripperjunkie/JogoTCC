@@ -45,12 +45,13 @@ public class Swing : MonoBehaviour
         InAirControl();
         if(_debug)
         {
+            print("_canThrow: " + _canThrow);
             print("holdingRope: " + holdingRope);
         }
         
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {        
         RopePoint ropePoint = other.GetComponent<RopePoint>();
         if (ropePoint && ropePoint.pointType != EPointType.NONE)
