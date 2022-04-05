@@ -1929,6 +1929,8 @@ GameObject:
   - component: {fileID: 3528953713060751067}
   - component: {fileID: 2347474469819034483}
   - component: {fileID: 1523995453032895848}
+  - component: {fileID: 342331274}
+  - component: {fileID: 342331284}
   m_Layer: 0
   m_Name: PlayerMaster
   m_TagString: Player
@@ -1945,7 +1947,7 @@ Transform:
   m_GameObject: {fileID: 7915954509333265801}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 50.8, y: 6.4, z: -18.56}
-  m_LocalScale: {x: 1.6200001, y: 1.6200001, z: 1.6200001}
+  m_LocalScale: {x: 1, y: 1.6200001, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7344121750492556282}
@@ -2226,7 +2228,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _camera: {fileID: 0}
-  movSpeed: 5
+  movSpeed: 4
   _rotateSpeed: 0.1
   groundSphereRadius: 0.2
   groudLayerMask:
@@ -2354,6 +2356,35 @@ MonoBehaviour:
   offsetRenderRope: 1.13
   airSpeed: 5
   _debug: 0
+--- !u!114 &342331274
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7915954509333265801}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db6401afb78cc484390a0a3e4a24d4af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _ChRb: {fileID: 7915954509333265794}
+  _walk: {fileID: 0}
+  _mv: {fileID: 7915954509333265806}
+--- !u!114 &342331284
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7915954509333265801}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 070b83f145a994d4c94b9f8798655d54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Song1: {fileID: 0}
+  Song2: {fileID: 0}
 --- !u!1 &7915954510667767131
 GameObject:
   m_ObjectHideFlags: 0
