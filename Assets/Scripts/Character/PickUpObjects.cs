@@ -6,17 +6,17 @@ public class PickUpObjects : MonoBehaviour
 {
  private bool bOnMove = false;
  private  bool bOnCollsion = false;
- private GameObject _arms = null;
+ private Transform _arms = null;
  private GameObject _objectMove = null;
 
  void Start()
  {
-   _arms = GameObject.Find("Arms");
+   _arms = GameObject.Find("Arms").GetComponent<Transform>();
  }
   
   void OnTriggerEnter(Collider col)
   {
-      if(col.gameObject.CompareTag("Box"))
+      if(col.gameObject.CompareTag("Box") && !_objectMove)
       {
         bOnCollsion = true;
         _objectMove = col.gameObject;
@@ -24,38 +24,39 @@ public class PickUpObjects : MonoBehaviour
   }
     void OnTriggerExit(Collider col)
   {
-      if(col.gameObject.CompareTag("Box"))
+      if(col.gameObject.CompareTag("Box") && !_objectMove)
       {
         bOnCollsion = false;
       }    
   }
-
-
-    void Update()
+     void Update()
     {
         if(Input.GetKeyDown(KeyCode.E) && !bOnMove && bOnCollsion)
-        {        
-          bOnMove = true;
+        {  
+           bOnMove = true;            
         }
         else if(Input.GetKeyDown(KeyCode.E) && bOnMove && bOnCollsion)
         {
           DropObject();
         }
 
-        MovingObject();
+       MovingObject();
     }
     void MovingObject()
     {  
-      if(bOnMove && _objectMove)
+      if( bOnMove && _objectMove)
       {
-         _objectMove.GetComponent<Rigidbody>().useGravity = false;
-         _objectMove.transform.position = Vector3.MoveTowards(_arms.transform.position, _arms.transform.position, 1);      
+         _objectMove.GetComponent<Rigidbody>().Sleep();
+         _objectMove.transform.position = _arms.transform.position;
+         _objectMove.transform.SetParent(_arms);
       }
     }
     void DropObject()
     {
-        _objectMove.GetComponent<Rigidbody>().useGravity = true;
+        _objectMove.GetComponent<Rigidbody>().WakeUp();
+        _objectMove.transform.SetParent(null);
         _objectMove = null;
         bOnMove = false;
+        bOnCollsion = false;
     }
 }
