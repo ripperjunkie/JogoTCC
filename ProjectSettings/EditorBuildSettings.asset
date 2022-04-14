@@ -9,6 +9,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Vini/teste vini.unity
     guid: 2c2d4fa3794f1514aaced4fa44cf8298
   - enabled: 1
-    path: Assets/Scenes/Chris/Chris_Scene.unity
+    path: Assets/Scenes/Game/Game_Scene.unity
     guid: eadc2b78edbcfe54bad77efafd1f036d
   m_configObjects: {}
