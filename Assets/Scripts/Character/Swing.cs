@@ -15,10 +15,10 @@ public class Swing : MonoBehaviour
 
     private PlayerMaster _playerMaster;
     private Animator _animator;
-    private RopePoint _ropePoint;
-    private Vector3 _ropePointLocation;
-    private Rigidbody _rb;
-    private bool _canThrow;
+    [SerializeField] private RopePoint _ropePoint;
+    [SerializeField] private Vector3 _ropePointLocation;
+    [SerializeField] private Rigidbody _rb;
+    [SerializeField] private bool _canThrow;
     private float currentRopeLength; //we'll lerp the rope length
     private LineRenderer _yoyoRopeRenderer;
 
@@ -82,8 +82,12 @@ public class Swing : MonoBehaviour
 
     public void TryThrow()
     {
-        if (!_playerMaster || !_animator || !_ropePoint || holdingRope) return;
-        if(Input.GetKeyDown(KeyCode.Mouse0) && _playerMaster.movementState == EMovementState.INAIR)
+        if (!_playerMaster || !_animator || !_ropePoint || holdingRope)
+        {
+            return;
+        }
+        bool canGrabRope = _playerMaster.movementState == EMovementState.INAIR || _playerMaster.movementState == EMovementState.SWINGING;
+        if (Input.GetKey(KeyCode.Mouse0) && canGrabRope)
         {
             if (_playerMaster.GetIsYoyoActive && _canThrow)
             {
@@ -95,6 +99,7 @@ public class Swing : MonoBehaviour
                 _rb.freezeRotation = false;
                 float distance = Vector3.Distance(transform.position, _ropePoint.rb.transform.position);
                 currentRopeLength = distance;
+                print("threw rope");
                 configurableJoint = gameObject.AddComponent<ConfigurableJoint>();
                 configurableJoint.autoConfigureConnectedAnchor = false;
                 configurableJoint.connectedBody = _ropePoint.rb;
@@ -164,7 +169,8 @@ public class Swing : MonoBehaviour
             _yoyoRopeRenderer.enabled = false;
             _rb.freezeRotation = true;
         }
-        if(_playerMaster.movementState == EMovementState.RAPPEL)
+        //_playerMaster.ResetMovementState();
+        if (_playerMaster.movementState == EMovementState.RAPPEL)
         {
             _playerMaster.ResetMovementState();
         }

@@ -51,14 +51,14 @@ public class PlayerMaster : MonoBehaviour
 
     public void ToggleEquipYoyo()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse1) && !_isYoyoActive && movementState != EMovementState.SWINGING)
+        if (Input.GetKeyDown(KeyCode.Mouse1) && !_isYoyoActive /*&& movementState != EMovementState.SWINGING*/)
         {
             EquipYoyo();
         }
-        if(movementState == EMovementState.SWINGING)
-        {
-            UnequipYoyo();
-        }
+        //if(movementState == EMovementState.SWINGING)
+        //{
+        //    UnequipYoyo();
+        //}
 
         if(Input.GetKeyUp(KeyCode.Mouse1) && _isYoyoActive)
         {
