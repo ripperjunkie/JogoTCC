@@ -4,42 +4,56 @@ using UnityEngine;
 
 public class PuzzleSeesaw : MonoBehaviour
 {
-    public  GameObject [] Cargas;
-    public int contCargas;
-    
-  //  void OnTriggerStay(Collider [] gg)
-    //{
-   //     for(int i = 0; i < 5; i++)
-      //  {
-      //       if(gg [i].gameObject.CompareTag("Box") ||  gg[i].gameObject.CompareTag("Player")  || gg[i].gameObject.CompareTag("BoxMove"))
-       //     {       
-       //         for(int j= 0; j < contCargas; j++)
-        //        {
-           //         Cargas[j] = gg[i].gameObject;
-         //              i++;
-            //        j++;
-          //      }
-           
-          //  }  
-      //  }
-        
-    //}
-       void OnTriggerExit(Collider col)
-    {
+     [SerializeField] private int _numberCollider;
+     private bool ss = false;
+    public List <GameObject> objts;
+    public TriggerEventFase []  triggerEvent;
+    [SerializeField] private string tag;
 
-    }
+      void OnTriggerStay(Collider  col)
+      {
+        if(col.CompareTag(tag))
+        {
+          if(! objts.Contains(col.gameObject))
+          {
+             objts.Add(col.gameObject);
+            Move();
+          }
+        }
+      } 
+      void OnTriggerExit(Collider  col)
+      {
+        if(col.CompareTag(tag))
+        {
+          if(objts.Contains(col.gameObject))
+          {
+             objts.Remove(col.gameObject);
+            Move();
+          }
+        }
+      }      
     void Start()
     {
         
     }
-     void ContSeesaw()
-     {
-
-     }
-
+    void Move()
+    {
+      if(objts.Count == _numberCollider)
+      {
+         if(triggerEvent != null)
+          {
+            triggerEvent[0].Invoke();
+          }
+      }     
+      else 
+      {
+        triggerEvent[1].Invoke();
+        print("GG");
+      }  
+    }
 
     void Update()
     {
-        
+
     }
 }
