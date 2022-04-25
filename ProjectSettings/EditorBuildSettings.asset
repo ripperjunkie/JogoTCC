@@ -11,4 +11,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Game/Game_Scene.unity
     guid: eadc2b78edbcfe54bad77efafd1f036d
+  - enabled: 1
+    path: Assets/Scenes/Rafa/Rafa LevelStreamingTest.unity
+    guid: d918c66286e8b2444a67f557f4d97f7e
+  - enabled: 1
+    path: Assets/Scenes/Rafa/Rafa LevelStreamingTest01.unity
+    guid: ec700b952296c644d9ef55955d3fff89
   m_configObjects: {}
