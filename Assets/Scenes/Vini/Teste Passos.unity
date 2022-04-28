@@ -142,6 +142,10 @@ PrefabInstance:
       propertyPath: Song2
       value: 
       objectReference: {fileID: 1008862804}
+    - target: {fileID: 342331284, guid: a996eb75faaf5c24d8ec9309bea24308, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7915954509333265801, guid: a996eb75faaf5c24d8ec9309bea24308,
         type: 3}
       propertyPath: m_Name
@@ -155,17 +159,17 @@ PrefabInstance:
     - target: {fileID: 7915954509333265804, guid: a996eb75faaf5c24d8ec9309bea24308,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -47.300003
+      value: -57.5
       objectReference: {fileID: 0}
     - target: {fileID: 7915954509333265804, guid: a996eb75faaf5c24d8ec9309bea24308,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -10.91
+      value: -12.7
       objectReference: {fileID: 0}
     - target: {fileID: 7915954509333265804, guid: a996eb75faaf5c24d8ec9309bea24308,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -3.6500006
+      value: -3.6
       objectReference: {fileID: 0}
     - target: {fileID: 7915954509333265804, guid: a996eb75faaf5c24d8ec9309bea24308,
         type: 3}
@@ -2139,7 +2143,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-16160
+  m_Name: pb_Mesh33662
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -4445,7 +4449,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-16278
+  m_Name: pb_Mesh33568
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -9293,7 +9297,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7111777, y: 1}
+    m_SensorSize: {x: 1.7777778, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -9310,7 +9314,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 728808313}
   m_LocalRotation: {x: 0.11040017, y: -0, z: -0, w: 0.99388725}
-  m_LocalPosition: {x: -47.480495, y: -7.9399996, z: -18.949001}
+  m_LocalPosition: {x: -57.680492, y: -9.73, z: -18.899}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -22140,6 +22144,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1559734880}
   - component: {fileID: 1559734879}
+  - component: {fileID: 1559734881}
   m_Layer: 0
   m_Name: SoundBox
   m_TagString: Untagged
@@ -22258,6 +22263,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1559734881
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1559734878}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c3c6429a5b5a0a41af5367a292d72fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  firstSong: {fileID: 8300000, guid: 2dc11c5ff5ecdb644958c17374bad68a, type: 3}
 --- !u!1 &1590116030
 GameObject:
   m_ObjectHideFlags: 0
@@ -22981,9 +22999,10 @@ GameObject:
   - component: {fileID: 1701491440}
   - component: {fileID: 1701491439}
   - component: {fileID: 1701491438}
+  - component: {fileID: 1701491442}
   m_Layer: 0
   m_Name: musicSong2
-  m_TagString: SoundRange2
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -23066,6 +23085,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1701491442
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1701491437}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a91790cbb5ae1b34a9eacb86663d16d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  newSong: {fileID: 8300000, guid: 56cd3185333f8c24c9d6b1f97d15dd8c, type: 3}
 --- !u!1 &1704185488
 GameObject:
   m_ObjectHideFlags: 0
@@ -25280,7 +25312,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1828033609}
   m_LocalRotation: {x: 0.11040017, y: -0, z: -0, w: 0.99388725}
-  m_LocalPosition: {x: -47.480495, y: -7.9399996, z: -18.949001}
+  m_LocalPosition: {x: -57.680492, y: -9.73, z: -18.899}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -26336,9 +26368,10 @@ GameObject:
   - component: {fileID: 1872866597}
   - component: {fileID: 1872866596}
   - component: {fileID: 1872866595}
+  - component: {fileID: 1872866599}
   m_Layer: 0
   m_Name: musicSong1
-  m_TagString: SoundRange1
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -26421,6 +26454,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1872866599
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1872866594}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a91790cbb5ae1b34a9eacb86663d16d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  newSong: {fileID: 8300000, guid: 2dc11c5ff5ecdb644958c17374bad68a, type: 3}
 --- !u!1 &1894595765
 GameObject:
   m_ObjectHideFlags: 0
