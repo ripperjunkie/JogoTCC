@@ -53,10 +53,15 @@ public class EnemyMoviment : MonoBehaviour
 
     private void OnTriggerEnter(Collider objectCollider)
     {
-        if (objectCollider.tag == "Player" && activeForCollider)
-        {
-            navMesh.destination = player.transform.position;
-        }
+        //if (objectCollider.tag == "Player" && activeForCollider)
+        //{
+        //    navMesh.destination = player.transform.position;
+        //}
+
+            if (objectCollider.gameObject.CompareTag("Player"))
+            {
+                FindObjectOfType<CanvasFadeAnimation>().PlayFadeOut();
+            }
     }
 
     private void StartChasing()
@@ -72,4 +77,5 @@ public class EnemyMoviment : MonoBehaviour
         _animator.SetFloat("ground_mov_speed", 0);
 
     }
+
 }

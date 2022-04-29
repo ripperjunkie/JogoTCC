@@ -2608,7 +2608,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh30942
+  m_Name: pb_Mesh51828
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -5060,11 +5060,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a436d2ed664f9e448ad2799f5d2f0a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  holdingRope: 0
+  configurableJoint: {fileID: 0}
   swingForce: 100
   lerpSwingRopeTime: 10
   desiredRopeLength: 0
   offsetRenderRope: 0
   airSpeed: 0
+  _debug: 0
+  _ropePoint: {fileID: 0}
+  _ropePointLocation: {x: 0, y: 0, z: 0}
+  _rb: {fileID: 0}
+  _canThrow: 0
 --- !u!114 &327544826
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6024,7 +6031,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh31580
+  m_Name: pb_Mesh52468
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -17667,7 +17674,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh31636
+  m_Name: pb_Mesh52524
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -19708,7 +19715,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2.009788, y: 1}
+    m_SensorSize: {x: 1.7777778, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -24865,7 +24872,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh31344
+  m_Name: pb_Mesh52232
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -26141,6 +26148,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tether: {fileID: 1500768442}
   rb: {fileID: 0}
+  pointType: 0
 --- !u!1 &1912182681
 GameObject:
   m_ObjectHideFlags: 0
@@ -28853,6 +28861,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 8170942982017421470, guid: af2296bab847aa349966153fa66745d0,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8170942982017421471, guid: af2296bab847aa349966153fa66745d0,
         type: 3}
