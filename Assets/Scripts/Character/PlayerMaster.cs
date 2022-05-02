@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerMaster : MonoBehaviour
 {
@@ -77,6 +78,12 @@ public class PlayerMaster : MonoBehaviour
             print("Movement state: " + movementState);
             print("Yoyo active: " + GetIsYoyoActive);
         }
+
+        if(Input.GetKeyDown(KeyCode.R))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().ToString());  
+        }
+
     }
 
     public void ToggleEquipYoyo()
