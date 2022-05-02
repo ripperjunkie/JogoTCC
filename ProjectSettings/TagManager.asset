@@ -14,6 +14,7 @@ TagManager:
   - Box
   - BoxMove
   - Destructible
+  - SoundBox
   layers:
   - Default
   - TransparentFX
