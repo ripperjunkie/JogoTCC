@@ -15,12 +15,42 @@ public class PlayerMaster : MonoBehaviour
     public bool GetIsYoyoActive { get => _isYoyoActive; }
 
 
+    public SaveSystem saveSystem = new SaveSystem();
+    public bool loadSaveData;
+    public Vector3 checkpointLocation;
+
+
+
 
     private void Start()
     {
         _rb = GetComponent<Rigidbody>();
         _charMovement = GetComponent<CharacterMovement>();
+        saveSystem.playerMasterRef = this;
+        if(loadSaveData)
+        {
+            Load();
+        }
     }
+
+    #region SaveAndLoadSystem
+
+    [ContextMenu("Save")]
+    public void Save()
+    {
+        saveSystem.SaveCheckpoint();
+    }
+    [ContextMenu("Load")]
+    public void Load()
+    {
+        saveSystem.LoadCheckpoint();
+    }
+    [ContextMenu("Delete save")]
+    public void Delete()
+    {
+        saveSystem.DeleteSave();
+    }
+    #endregion
 
     private void Update()
     {
