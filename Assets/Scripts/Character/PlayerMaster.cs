@@ -65,6 +65,10 @@ public class PlayerMaster : MonoBehaviour
                 {
                     movementState = EMovementState.WALKING;
                 }
+                if (_rb.velocity.magnitude != 0f && _charMovement.HitBrige())
+                {
+                    movementState = EMovementState.WALKING;
+                }
                 if (_rb.velocity.y != 0f && !_charMovement.HitGround())
                 {
                     movementState = EMovementState.INAIR;

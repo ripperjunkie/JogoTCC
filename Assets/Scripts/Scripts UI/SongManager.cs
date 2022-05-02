@@ -43,11 +43,11 @@ public class SongManager : MonoBehaviour
             {
                 song02.volume = Mathf.Lerp(0, 1, currentTimer / fadeOutTimer);
                 song01.volume = Mathf.Lerp(1, 0, currentTimer / fadeOutTimer);
-                Debug.Log(currentTimer);
+               // Debug.Log(currentTimer);
                 currentTimer += Time.deltaTime;
                 yield return null;
             }
-
+            
             song01.Stop();
         }
         else
