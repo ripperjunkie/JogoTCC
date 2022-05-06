@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MoveObjects : MonoBehaviour
+public class Teste : MonoBehaviour
 {
 private GameObject _player = null;
 private bool bOnCollsion;
@@ -14,7 +14,7 @@ private Vector3 _forceD;
 public bool _active = false;
 private FixedJoint _fixedJ;
 private Animator _animator;
-public AudioSource _audio;
+private AudioSource _audioSource;
 private float _lerpRigidSpeed = 1f;
 private float _groundLocoSpeed;
 
@@ -25,6 +25,7 @@ private float _groundLocoSpeed;
      _speedInitial = _player.GetComponent<CharacterMovement>().movSpeed;
      _animator = _player.GetComponent<Animator>();
      _fixedJ = GetComponent<FixedJoint>();
+     _audioSource = GetComponent<AudioSource>();
    }
 
   void OnTriggerEnter(Collider col)
@@ -49,11 +50,13 @@ private float _groundLocoSpeed;
         if(Input.GetKeyDown(KeyCode.E) && bOnCollsion && !_active)
         {        
            _active = true;
+           _animator.SetBool( "move_Objects", true);
         }
          else if(Input.GetKeyDown(KeyCode.E) && _active)
         {        
            _active = false;
            _player.GetComponent<CharacterMovement>().movSpeed = _speedInitial;
+            _animator.SetBool( "move_Objects", false);
         }
 
          Move();       
@@ -75,11 +78,11 @@ private float _groundLocoSpeed;
         _animator.SetFloat("move_object", _groundLocoSpeed);
         if(_groundLocoSpeed >= 1)
         {
-          _audio.Play();
+          _audioSource.Play();
         }
         else
         {
-          _audio.Stop();
+          _audioSource.Stop();
         }
       }
       else 
@@ -87,6 +90,6 @@ private float _groundLocoSpeed;
         _rBBox.Sleep();
         _player.transform.LookAt(null);
         _fixedJ.connectedBody = null;
-      }  
-    } 
+      }   
+    }
 }
