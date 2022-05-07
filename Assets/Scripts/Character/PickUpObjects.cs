@@ -8,8 +8,10 @@ public class PickUpObjects : MonoBehaviour
  private  bool bOnCollsion = false;
  private Transform _arms = null;
  private GameObject _objectMove = null;
-  private Animator _animator;
-  public Transform initialPosition = null;
+private Animator _animator;
+private BoxCollider _boxCollider;
+private Rigidbody _rBBox;
+public Transform initialPosition = null;
 
  void Start()
  {
@@ -23,6 +25,8 @@ public class PickUpObjects : MonoBehaviour
       {
         bOnCollsion = true;
         _objectMove = col.gameObject;
+        _boxCollider = col.gameObject.GetComponent<BoxCollider>();
+        _rBBox = col.gameObject.GetComponent<Rigidbody>();
         initialPosition = col.transform;
       }    
   }
@@ -37,29 +41,32 @@ public class PickUpObjects : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.E) && !bOnMove && bOnCollsion)
         {  
-           bOnMove = true;
-           _animator.SetTrigger("pick_up");            
+         
+           StartCoroutine(MovingObject());  
         }
         else if(Input.GetKeyDown(KeyCode.E) && bOnMove && bOnCollsion)
         {
           DropObject();
         }
-
-       MovingObject();
     }
-    void MovingObject()
+    IEnumerator MovingObject()
     {  
-      if( bOnMove && _objectMove)
+      if(_objectMove)
       {
-         _objectMove.GetComponent<Rigidbody>().Sleep();
+          bOnMove = true;
+          _animator.SetTrigger("pick_up");
+           yield return new WaitForSeconds(0.6f);
+          _boxCollider.enabled = false;
          _objectMove.transform.position = _arms.transform.position;
          _objectMove.transform.SetParent(_arms);
       }
     }
     void DropObject()
     {
-        _objectMove.GetComponent<Rigidbody>().WakeUp();
+        StopCoroutine(MovingObject());
         _objectMove.transform.SetParent(null);
+        _boxCollider.enabled = true;
+        _boxCollider = null;
         _objectMove = null;
         bOnMove = false;
         bOnCollsion = false;

@@ -15,9 +15,10 @@ GameObject:
   - component: {fileID: 3250290337683938633}
   - component: {fileID: 1632658976}
   - component: {fileID: 1632658981}
+  - component: {fileID: 1084229365}
   m_Layer: 3
   m_Name: CaixaMovel
-  m_TagString: BoxMove
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -227,3 +228,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1084229365
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3250290337683938626}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5007f6b0359a53b41a235e4c483b88d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  force: 30
+  _active: 0
+  _audio: {fileID: 0}

@@ -7,7 +7,7 @@ public class PuzzleSeesaw : MonoBehaviour
      [SerializeField] private int _numberCollider;
      private bool ss = false;
     public List <GameObject> objts;
-    public TriggerEventFase []  triggerEvent;
+    public TriggerEventFase  triggerEvent;
     [SerializeField] private string tag;
 
       void OnTriggerStay(Collider  col)
@@ -42,18 +42,9 @@ public class PuzzleSeesaw : MonoBehaviour
       {
          if(triggerEvent != null)
           {
-            triggerEvent[0].Invoke();
+            triggerEvent.Invoke();
           }
       }     
-      else 
-      {
-        triggerEvent[1].Invoke();
-        print("GG");
-      }  
     }
 
-    void Update()
-    {
-
-    }
 }

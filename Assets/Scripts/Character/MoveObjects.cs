@@ -5,18 +5,18 @@ using UnityEngine;
 public class MoveObjects : MonoBehaviour
 {
 private GameObject _player = null;
-private bool bOnCollsion;
+private bool bOnCollsion = false;
 private Rigidbody _rBBox = null;
 public float force = 0;
 private float _speedPlayer = 0;
 private float _speedInitial = 0;
 private Vector3 _forceD;
 public bool _active = false;
-private FixedJoint _fixedJ;
-private Animator _animator;
-public AudioSource _audio;
+private FixedJoint _fixedJ = null;
+private Animator _animator = null;
+public AudioSource _audio = null;
 private float _lerpRigidSpeed = 1f;
-private float _groundLocoSpeed;
+private float _groundLocoSpeed = 1f;
 
    void Start()
    {
@@ -25,6 +25,7 @@ private float _groundLocoSpeed;
      _speedInitial = _player.GetComponent<CharacterMovement>().movSpeed;
      _animator = _player.GetComponent<Animator>();
      _fixedJ = GetComponent<FixedJoint>();
+     _audio = GetComponent<AudioSource>();
    }
 
   void OnTriggerEnter(Collider col)

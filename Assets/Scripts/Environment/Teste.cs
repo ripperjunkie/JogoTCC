@@ -4,92 +4,72 @@ using UnityEngine;
 
 public class Teste : MonoBehaviour
 {
-private GameObject _player = null;
-private bool bOnCollsion;
-private Rigidbody _rBBox = null;
-public float force = 0;
-private float _speedPlayer = 0;
-private float _speedInitial = 0;
-private Vector3 _forceD;
-public bool _active = false;
-private FixedJoint _fixedJ;
+ private bool bOnMove = false;
+ private  bool bOnCollsion = false;
+ private Transform _arms = null;
 private Animator _animator;
-private AudioSource _audioSource;
-private float _lerpRigidSpeed = 1f;
-private float _groundLocoSpeed;
+private BoxCollider _boxCollider;
+private Rigidbody  _rdBody;
+private Vector3 initialPosition;
 
-   void Start()
-   {
-     _rBBox = gameObject.GetComponent<Rigidbody>();
-     _player =  GameObject.Find("PlayerMaster");    
-     _speedInitial = _player.GetComponent<CharacterMovement>().movSpeed;
-     _animator = _player.GetComponent<Animator>();
-     _fixedJ = GetComponent<FixedJoint>();
-     _audioSource = GetComponent<AudioSource>();
-   }
-
+ void Start()
+ {
+   _arms = GameObject.Find("PickUP").GetComponent<Transform>();
+   _animator = _arms.GetComponentInParent<Animator>();
+  _boxCollider = GetComponent<BoxCollider>();
+   _rdBody = GetComponent<Rigidbody>();
+   initialPosition = transform.position;
+ }
+  
   void OnTriggerEnter(Collider col)
   {
-       if(col.gameObject.CompareTag("Player"))
-      {      
-        bOnCollsion = true;
-       }
+      if(col.gameObject.CompareTag("Player"))
+      {
+        bOnCollsion = true;     
+      }
+
+      if(col.gameObject.CompareTag("BoxMove"))
+      {
+       transform.position = initialPosition;    
+      }     
   }
     void OnTriggerExit(Collider col)
   {
-       if(col.gameObject.CompareTag("Player"))
+      if(col.gameObject.CompareTag("Player"))
       {
         bOnCollsion = false;
-       }
+      }    
   }
-
-  void FixedUpdate()
+     void Update()
     {
-       _forceD = new Vector3(Input.GetAxis("Horizontal"), 0 ,Input.GetAxis("Vertical"));
-
-        if(Input.GetKeyDown(KeyCode.E) && bOnCollsion && !_active)
-        {        
-           _active = true;
-           _animator.SetBool( "move_Objects", true);
+        if(Input.GetKeyDown(KeyCode.E) && !bOnMove && bOnCollsion)
+        {  
+         
+           StartCoroutine(MovingObject());  
         }
-         else if(Input.GetKeyDown(KeyCode.E) && _active)
-        {        
-           _active = false;
-           _player.GetComponent<CharacterMovement>().movSpeed = _speedInitial;
-            _animator.SetBool( "move_Objects", false);
+        else if(Input.GetKeyDown(KeyCode.E) && bOnMove)
+        {
+          DropObject();
         }
-
-         Move();       
     }
+    IEnumerator MovingObject()
+    {  
+      bOnMove = true;
+      _animator.SetTrigger("pick_up");
+      yield return new WaitForSeconds(0.6f);
 
-    void Move()
+       _boxCollider.isTrigger = true;
+       _rdBody.isKinematic = true;
+        transform.position = _arms.transform.position;
+        transform.SetParent(_arms);
+    }
+    void DropObject()
     {
-      if(_active){
-
-        _player.GetComponent<CharacterMovement>().movSpeed = _speedPlayer;
-        _rBBox.WakeUp();
-        _forceD.y = 0;
-        _forceD.Normalize();
-        _player.transform.LookAt(transform);
-        _fixedJ.connectedBody = _player.GetComponent<Rigidbody>();
-         _rBBox.AddForce(_forceD * force, ForceMode.Impulse);
-       
-        _groundLocoSpeed = Mathf.Lerp(_animator.GetFloat("move_object"), _rBBox.velocity.magnitude, _lerpRigidSpeed);
-        _animator.SetFloat("move_object", _groundLocoSpeed);
-        if(_groundLocoSpeed >= 1)
-        {
-          _audioSource.Play();
-        }
-        else
-        {
-          _audioSource.Stop();
-        }
-      }
-      else 
-      {
-        _rBBox.Sleep();
-        _player.transform.LookAt(null);
-        _fixedJ.connectedBody = null;
-      }   
+      StopCoroutine(MovingObject());
+      transform.SetParent(null);
+      _boxCollider.isTrigger = false;
+      _rdBody.isKinematic = false;
+      bOnMove = false;
+      bOnCollsion = false;
     }
 }
