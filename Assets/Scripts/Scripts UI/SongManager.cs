@@ -31,7 +31,7 @@ public class SongManager : MonoBehaviour
     }
     private IEnumerator FadeEffect(AudioClip _newClip)
     {
-        float fadeOutTimer = 1.75f;
+        float fadeOutTimer = 2.25f;
         float currentTimer = 0;
 
         if (isPlayingSong01)
@@ -41,8 +41,8 @@ public class SongManager : MonoBehaviour
 
             while(currentTimer < fadeOutTimer)
             {
-                song02.volume = Mathf.Lerp(0, 1, currentTimer / fadeOutTimer);
-                song01.volume = Mathf.Lerp(1, 0, currentTimer / fadeOutTimer);
+                song02.volume = Mathf.Lerp(0, 0.8f, currentTimer / fadeOutTimer);
+                song01.volume = Mathf.Lerp(0.8f, 0, currentTimer / fadeOutTimer);
                // Debug.Log(currentTimer);
                 currentTimer += Time.deltaTime;
                 yield return null;

@@ -6,13 +6,26 @@ public class ControlSound : MonoBehaviour
 {
     //public bool teste;
     public GameObject[] soundBoxes;
-
+    public GameObject theSoundOfBox;
+    private bool stopper;
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            soundBoxes[0].SetActive(true);
-            soundBoxes[1].SetActive(false);
+            if (!stopper)
+            {
+                for (int i = 0; i < soundBoxes.Length; i++)
+                {
+                    soundBoxes[i].SetActive(true);
+                }
+                stopper = !stopper;
+                theSoundOfBox.SetActive(false);
+            }
+
         }
+    }
+    private void OnDisable()
+    {
+        stopper = false;
     }
 }
