@@ -17,8 +17,4 @@ public class CanvasMaster : MonoBehaviour
     {
         SceneManager.LoadScene(_levelName);
     }
-
-
-
-
 }
