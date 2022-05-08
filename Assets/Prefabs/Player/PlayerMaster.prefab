@@ -1988,6 +1988,7 @@ GameObject:
   - component: {fileID: 342331274}
   - component: {fileID: 342331284}
   - component: {fileID: 689882537844228051}
+  - component: {fileID: 6345371008267886537}
   m_Layer: 0
   m_Name: PlayerMaster
   m_TagString: Player
@@ -2294,7 +2295,7 @@ MonoBehaviour:
     m_Bits: 8
   brigeLayerMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   bDebugGizmos: 0
 --- !u!114 &7915954509333265795
 MonoBehaviour:
@@ -2340,10 +2341,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementState: 0
+  _canvasPrefab: {fileID: 0}
   _isDebug: 0
   saveSystem:
     playerMasterRef: {fileID: 0}
-  loadSaveData: 0
+  loadSaveData: 1
   checkpointLocation: {x: 0, y: 0, z: 0}
 --- !u!114 &7915954509333265850
 MonoBehaviour:
@@ -2452,6 +2454,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _balanceSpeed: 7
+--- !u!114 &6345371008267886537
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7915954509333265801}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 147f95db8e6744347909e791568efca4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _canvasMaster: {fileID: 0}
 --- !u!1 &7915954510667767131
 GameObject:
   m_ObjectHideFlags: 0

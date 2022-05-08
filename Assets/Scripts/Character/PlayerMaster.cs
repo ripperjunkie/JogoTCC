@@ -7,6 +7,10 @@ public class PlayerMaster : MonoBehaviour
 {
     public EMovementState movementState;
 
+    [SerializeField] private GameObject _canvasPrefab;
+    public CanvasMaster canvasMaster;
+
+
     [SerializeField] private bool _isDebug;
     private Rigidbody _rb;
     private CharacterMovement _charMovement;
@@ -21,7 +25,13 @@ public class PlayerMaster : MonoBehaviour
     public Vector3 checkpointLocation;
 
 
-
+    private void Awake()
+    {
+        if (_canvasPrefab)
+        {
+            Instantiate(_canvasPrefab);
+        }
+    }
 
     private void Start()
     {
