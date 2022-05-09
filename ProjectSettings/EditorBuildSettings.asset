@@ -6,8 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Vini/teste vini.unity
-    guid: 2c2d4fa3794f1514aaced4fa44cf8298
+    path: Assets/Scenes/Game/MainMenu.unity
+    guid: e06b05ac9cd524d4f95dc441b8b65707
   - enabled: 1
     path: Assets/Scenes/Game/Game_Scene.unity
     guid: eadc2b78edbcfe54bad77efafd1f036d

@@ -29,7 +29,13 @@ public class PlayerMaster : MonoBehaviour
     {
         if (_canvasPrefab)
         {
-            Instantiate(_canvasPrefab);
+            GameObject go = Instantiate(_canvasPrefab);
+            CanvasMaster canvas = go.GetComponent<CanvasMaster>(); 
+            if(canvas)
+            {
+                canvas.pauseMenu = GetComponent<PauseMenu>();
+                canvasMaster = canvas;
+            }
         }
     }
 
@@ -38,6 +44,7 @@ public class PlayerMaster : MonoBehaviour
         _rb = GetComponent<Rigidbody>();
         _charMovement = GetComponent<CharacterMovement>();
         saveSystem.playerMasterRef = this;
+        Time.timeScale = 1f;
         if(loadSaveData)
         {
             Load();

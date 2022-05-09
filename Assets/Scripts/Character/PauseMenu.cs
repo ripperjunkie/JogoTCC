@@ -16,8 +16,9 @@ public class PauseMenu : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetButtonDown("Pause"))
+        if(Input.GetKeyDown(KeyCode.P))
         {
+            print("pause!!");
             if(isGamePaused)
             {
                 Unpause();
@@ -29,25 +30,29 @@ public class PauseMenu : MonoBehaviour
         }
     }
 
-
+    [ContextMenu("Pause")]
     public void Pause()
     {
         isGamePaused = true;
+        print("pause");
         Time.timeScale = 0f;
         Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.Confined;
         if(_playerMaster && _playerMaster.canvasMaster)
         {
             _playerMaster.canvasMaster.pausePanel.SetActive(true);
         }
     }
 
+    [ContextMenu("Unpause")]
     public void Unpause()
     {
         isGamePaused = false;
         Time.timeScale = 1f;
         Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
 
-        if(_playerMaster && _playerMaster.canvasMaster)
+        if (_playerMaster && _playerMaster.canvasMaster)
         {
             _playerMaster.canvasMaster.pausePanel.SetActive(false);
         }
