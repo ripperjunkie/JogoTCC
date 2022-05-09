@@ -15,7 +15,8 @@ public class CharacterMovement : MonoBehaviour
     [SerializeField] private LayerMask brigeLayerMask;
 
     [Header("Debug")]
-    [SerializeField] private bool bDebugGizmos;
+    [SerializeField] private bool debugParams;
+
 
     private float _turnSmoothVelocity;
     private Rigidbody _rigidbody;
@@ -33,6 +34,13 @@ public class CharacterMovement : MonoBehaviour
     private void Update()
     {
         Movement();
+        if(debugParams)
+        {
+            print("Hit ground? " + HitGround());
+            print("Hit bridge? " + HitBrige());
+        }
+        
+
     }
 
 
@@ -81,7 +89,7 @@ public class CharacterMovement : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        if (!bDebugGizmos) return;
+        if (!debugParams) return;
         Gizmos.color = Color.red; 
         Gizmos.DrawWireSphere(transform.position, groundSphereRadius);
     }
