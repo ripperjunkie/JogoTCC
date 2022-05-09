@@ -52,13 +52,10 @@ public class PlayerMaster : MonoBehaviour
     }
 
     #region SaveAndLoadSystem
-
-    [ContextMenu("Save")]
     public void Save()
     {
         saveSystem.SaveCheckpoint();
     }
-    [ContextMenu("Load")]
     public void Load()
     {
         saveSystem.LoadCheckpoint();

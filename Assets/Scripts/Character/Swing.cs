@@ -82,7 +82,7 @@ public class Swing : MonoBehaviour
 
     public void TryThrow()
     {
-        if (!_playerMaster || !_animator || !_ropePoint || holdingRope)
+        if (!_playerMaster || !_ropePoint || holdingRope)
         {
             return;
         }
@@ -91,7 +91,7 @@ public class Swing : MonoBehaviour
         {
             if (_playerMaster.GetIsYoyoActive && _canThrow)
             {
-                _animator.SetTrigger("Throw");
+                //_animator.SetTrigger("Throw");
                 
                 holdingRope = true;
 
