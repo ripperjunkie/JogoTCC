@@ -401,7 +401,7 @@ MonoBehaviour:
   brigeLayerMask:
     serializedVersion: 2
     m_Bits: 64
-  bDebugGizmos: 0
+  debugParams: 0
 --- !u!114 &7915954509333265799
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -631,6 +631,11 @@ PrefabInstance:
       propertyPath: _rigidbody
       value: 
       objectReference: {fileID: 7915954509333265794}
+    - target: {fileID: 4264202993989507262, guid: c3ad4f12b7b9cac478d2f8ea94f6e917,
+        type: 3}
+      propertyPath: _playerMasterRef
+      value: 
+      objectReference: {fileID: 7915954509333265797}
     - target: {fileID: 8404336303315745739, guid: c3ad4f12b7b9cac478d2f8ea94f6e917,
         type: 3}
       propertyPath: m_Name

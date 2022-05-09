@@ -15,7 +15,7 @@ public class CharacterAnimation : MonoBehaviour
 
     private void Start()
     {
-        _playerMasterRef = GetComponent<PlayerMaster>();
+        _playerMasterRef = GetComponentInParent<PlayerMaster>();
 
     }
 
