@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class CanvasMaster : MonoBehaviour
 {
     public GameObject pausePanel;
+    public GameObject endGamePanel;
     public PauseMenu pauseMenu;
 
     public void Restart()

@@ -160,4 +160,18 @@ public class PlayerMaster : MonoBehaviour
     {
         movementState = EMovementState.RIDING;
     }
+
+    //Só está aqui para o j2, pode ser retirado dps do j2
+    public void OnTriggerEnter(Collider other)
+    {
+        if(other.CompareTag("EndLevel"))
+        {
+            if(canvasMaster)
+            {
+                canvasMaster.endGamePanel.SetActive(true);
+                Cursor.lockState = CursorLockMode.Confined;
+                Cursor.visible = true;
+            }
+        }
+    }
 }
