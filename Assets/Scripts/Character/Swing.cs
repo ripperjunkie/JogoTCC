@@ -48,7 +48,10 @@ public class Swing : MonoBehaviour
             print("_canThrow: " + _canThrow);
             print("holdingRope: " + holdingRope);
         }
-        
+        if (_ropePoint)
+        {
+            _ropePointLocation = _ropePoint.rb.transform.position;
+        }
     }
 
     private void OnTriggerStay(Collider other)
@@ -58,7 +61,7 @@ public class Swing : MonoBehaviour
         {
             _canThrow = true;
             _ropePoint = ropePoint;
-            _ropePointLocation = ropePoint.rb.transform.position;
+            //_ropePointLocation = ropePoint.rb.transform.position;
         }
 
         ExitRappel exitRappel = other.GetComponent<ExitRappel>();

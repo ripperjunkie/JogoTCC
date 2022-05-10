@@ -60,7 +60,7 @@ public class CharacterMovement : MonoBehaviour
                 float targetAngle = Mathf.Atan2(dir.x, dir.z) * Mathf.Rad2Deg;
                 float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref _turnSmoothVelocity, _rotateSpeed);
 
-                if(_playerMaster.movementState != EMovementState.SWINGING)
+                if(_playerMaster.movementState != EMovementState.SWINGING || _playerMaster.movementState != EMovementState.PUSHING)
                     transform.rotation = Quaternion.Euler(0f, angle, 0f);
 
                 Vector3 movDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward; 
