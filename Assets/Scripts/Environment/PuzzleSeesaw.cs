@@ -8,6 +8,8 @@ public class PuzzleSeesaw : MonoBehaviour
      private bool ss = false;
     public List <GameObject> objts;
     public TriggerEventFase  triggerEvent;
+    public ResetTriggerEventFase resetTriggerEvent;
+
     [SerializeField] private string tag;
 
       void OnTriggerStay(Collider  col)
@@ -28,13 +30,16 @@ public class PuzzleSeesaw : MonoBehaviour
           if(objts.Contains(col.gameObject))
           {
              objts.Remove(col.gameObject);
-            Move();
+            Remove();
           }
         }
-      }      
-    void Start()
+      }
+    private void Remove()
     {
-        
+        if (resetTriggerEvent != null)
+        {
+            resetTriggerEvent.Invoke();
+        }
     }
     void Move()
     {

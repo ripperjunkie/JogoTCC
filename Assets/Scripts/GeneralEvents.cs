@@ -6,3 +6,9 @@ using UnityEngine.Events;
 [System.Serializable]
 public class TriggerEventFase : UnityEvent { }
 
+[System.Serializable]
+public class ResetTriggerEventFase : UnityEvent { }
+
+
+
+
