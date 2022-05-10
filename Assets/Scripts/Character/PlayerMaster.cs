@@ -62,7 +62,7 @@ public class PlayerMaster : MonoBehaviour
         saveSystem.LoadCheckpoint();
     }
     [ContextMenu("Delete save")]
-    public void Delete()
+    public void DeleteSave()
     {
         saveSystem.DeleteSave();
     }
@@ -101,6 +101,11 @@ public class PlayerMaster : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.R))
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().ToString());  
+        }
+
+        if(Input.GetKeyDown(KeyCode.Keypad1))
+        {
+            DeleteSave();
         }
 
     }
