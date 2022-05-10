@@ -23,6 +23,7 @@ public class PlayerMaster : MonoBehaviour
     public SaveSystem saveSystem = new SaveSystem();
     public bool loadSaveData;
     public Vector3 checkpointLocation;
+    public GameObject yoyoMesh;
 
 
     private void Awake()
@@ -121,11 +122,19 @@ public class PlayerMaster : MonoBehaviour
         if(_canEquipYoyo)
         {
             _isYoyoActive = true;
+            if(yoyoMesh)
+            {
+                yoyoMesh.SetActive(true);
+            }
         }
     }
     public void UnequipYoyo()
     {
         _isYoyoActive = false;
+        if(yoyoMesh)
+        {
+            yoyoMesh.SetActive(false);
+        }
     }
 
     public void ResetMovementState()

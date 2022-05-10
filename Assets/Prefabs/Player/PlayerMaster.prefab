@@ -273,12 +273,12 @@ GameObject:
   - component: {fileID: 6420248117820410084}
   - component: {fileID: 2308330463873882051}
   m_Layer: 0
-  m_Name: pCylinder1
+  m_Name: YoyoMesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3091543268116038909
 Transform:
   m_ObjectHideFlags: 0
@@ -581,6 +581,7 @@ MonoBehaviour:
     playerMasterRef: {fileID: 0}
   loadSaveData: 1
   checkpointLocation: {x: 0, y: 0, z: 0}
+  yoyoMesh: {fileID: 7694847490876432402}
 --- !u!114 &7915954509333265850
 MonoBehaviour:
   m_ObjectHideFlags: 0
