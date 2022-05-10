@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2217954267506152287}
   - component: {fileID: 2217954267506152256}
   - component: {fileID: 1995565962}
-  - component: {fileID: 3724053260828969219}
+  - component: {fileID: 4825552430354680910}
   m_Layer: 0
   m_Name: caixinhaMovel
   m_TagString: Box
@@ -115,7 +115,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 122
   m_CollisionDetection: 0
---- !u!114 &3724053260828969219
+--- !u!114 &4825552430354680910
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

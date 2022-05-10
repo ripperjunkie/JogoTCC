@@ -32,9 +32,10 @@ public Transform initialPosition = null;
   }
     void OnTriggerExit(Collider col)
   {
-      if(col.gameObject.CompareTag("Box") && !_objectMove)
+      if(col.gameObject.CompareTag("Box") && !bOnMove)
       {
         bOnCollsion = false;
+        _objectMove = null;
       }    
   }
      void Update()
@@ -44,7 +45,7 @@ public Transform initialPosition = null;
          
            StartCoroutine(MovingObject());  
         }
-        else if(Input.GetKeyDown(KeyCode.E) && bOnMove && bOnCollsion)
+        else if(Input.GetKeyDown(KeyCode.E) && bOnMove)
         {
           DropObject();
         }
@@ -54,7 +55,7 @@ public Transform initialPosition = null;
       if(_objectMove)
       {
           bOnMove = true;
-         // _animator.SetTrigger("pick_up");
+  
            yield return new WaitForSeconds(0.6f);
            _rBBox.isKinematic = true;
           _boxCollider.enabled = false;
@@ -65,13 +66,12 @@ public Transform initialPosition = null;
     void DropObject()
     {
         StopCoroutine(MovingObject());
+         bOnMove = false;
+         bOnCollsion = false;
         _objectMove.transform.SetParent(null);
         _boxCollider.enabled = true;
         _rBBox.isKinematic = false;
         _boxCollider = null;
-        _objectMove = null;
-       
-        bOnMove = false;
-        bOnCollsion = false;
+        _objectMove = null;           
     }
 }
