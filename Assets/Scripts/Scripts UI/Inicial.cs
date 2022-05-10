@@ -19,9 +19,7 @@ public class Inicial : MonoBehaviour
     {
        
         _MenuScreen = true;
-        _PrimaryScreen = false;
-       
-        
+        _PrimaryScreen = false;  
         //para poder começar a aumentar a musica
         _canIncrease = true;
         _valueSlider = 0f;    

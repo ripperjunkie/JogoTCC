@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class ManagerScene : MonoBehaviour
 {
     public string sceneSelection;
-
+    public AudioSource sfx;
     void Start()
     {
         
@@ -18,7 +18,10 @@ public class ManagerScene : MonoBehaviour
     {
         
     }
-
+    public void SfxClick()
+    {
+        sfx.PlayOneShot(sfx.clip);
+    }
     public void ChangeScene()
     {
         SceneManager.LoadScene(sceneSelection);
