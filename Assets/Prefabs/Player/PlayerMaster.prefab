@@ -573,12 +573,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementState: 0
-  _canvasPrefab: {fileID: 0}
+  _canvasPrefab: {fileID: 7859977834607946124, guid: db4a3437e09af594da3db1e8e480973d,
+    type: 3}
   canvasMaster: {fileID: 0}
   _isDebug: 0
   saveSystem:
     playerMasterRef: {fileID: 0}
-  loadSaveData: 0
+  loadSaveData: 1
   checkpointLocation: {x: 0, y: 0, z: 0}
 --- !u!114 &7915954509333265850
 MonoBehaviour:
