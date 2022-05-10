@@ -6,10 +6,12 @@ public class PushLever : MonoBehaviour
 {
 
     public float speedPlataform = 0;
+    public bool bOncolission = false;
     public bool active = false;
 
-    public Platform platform;
+    
     public TriggerEventFase triggerEvent;
+    public ResetTriggerEventFase reset;
 
     void Start()
     {
@@ -19,34 +21,41 @@ public class PushLever : MonoBehaviour
     {
         if (col.gameObject.CompareTag("Player"))
         {
-            active = true;
+            bOncolission = true;
         }
     }
     void OnTriggerExit(Collider col)
     {
         if (col.gameObject.CompareTag("Player"))
         {
-            active = false;
+            bOncolission = false;
         }
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E) && active)
+        if (Input.GetKeyDown(KeyCode.E) && bOncolission && !active)
         {
-
+             active = true;
             Move();
+        }
+         else if (Input.GetKeyDown(KeyCode.E) && bOncolission && active)
+        {
+                active = false;
+            Remove();
         }
     }
     void Move()
     {
-        print("move");
+      
         triggerEvent.Invoke();
-        //if(active)
-        //{
-        //  platform.StartCoroutine(platform.ActiveLever());
-        //}
-
+        print(active);
+    }
+    void Remove()
+    {
+    
+        reset.Invoke();
+        print(active);
     }
 
 }

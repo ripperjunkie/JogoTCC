@@ -7,7 +7,7 @@ public class PickUpObjects : MonoBehaviour
  private bool bOnMove = false;
  private  bool bOnCollsion = false;
  private Transform _arms = null;
- private GameObject _objectMove = null;
+ public GameObject _objectMove = null;
 private Animator _animator;
 private BoxCollider _boxCollider;
 private Rigidbody _rBBox;
@@ -54,8 +54,9 @@ public Transform initialPosition = null;
       if(_objectMove)
       {
           bOnMove = true;
-          _animator.SetTrigger("pick_up");
+         // _animator.SetTrigger("pick_up");
            yield return new WaitForSeconds(0.6f);
+           _rBBox.isKinematic = true;
           _boxCollider.enabled = false;
          _objectMove.transform.position = _arms.transform.position;
          _objectMove.transform.SetParent(_arms);
@@ -66,8 +67,10 @@ public Transform initialPosition = null;
         StopCoroutine(MovingObject());
         _objectMove.transform.SetParent(null);
         _boxCollider.enabled = true;
+        _rBBox.isKinematic = false;
         _boxCollider = null;
         _objectMove = null;
+       
         bOnMove = false;
         bOnCollsion = false;
     }

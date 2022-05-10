@@ -49,13 +49,12 @@ private Vector3 initialPosition;
         }
         else if(Input.GetKeyDown(KeyCode.E) && bOnMove)
         {
-          DropObject();
+        //  DropObject();
         }
     }
     IEnumerator MovingObject()
     {  
       bOnMove = true;
-      _animator.SetTrigger("pick_up");
       yield return new WaitForSeconds(0.6f);
 
        _boxCollider.isTrigger = true;
@@ -63,13 +62,13 @@ private Vector3 initialPosition;
         transform.position = _arms.transform.position;
         transform.SetParent(_arms);
     }
-    void DropObject()
-    {
-      StopCoroutine(MovingObject());
-      transform.SetParent(null);
-      _boxCollider.isTrigger = false;
-      _rdBody.isKinematic = false;
-      bOnMove = false;
-      bOnCollsion = false;
-    }
+   // void DropObject()
+   // {
+    //  StopCoroutine(MovingObject());
+    //  transform.SetParent(null);
+    //  _boxCollider.isTrigger = false;
+      //_rdBody.isKinematic = false;
+     // bOnMove = false;
+     // bOnCollsion = false;
+   // }
 }
