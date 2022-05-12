@@ -20,7 +20,7 @@ public class CharacterMovement : MonoBehaviour
 
     private float _turnSmoothVelocity;
     private Rigidbody _rigidbody;
-    private PlayerMaster _playerMaster;    
+    private PlayerMaster _playerMaster;
 
     private void Start()
     {
@@ -31,7 +31,7 @@ public class CharacterMovement : MonoBehaviour
 
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         Movement();
         if(debugParams)
@@ -39,11 +39,7 @@ public class CharacterMovement : MonoBehaviour
             print("Hit ground? " + HitGround());
             print("Hit bridge? " + HitBrige());
         }
-        
-
     }
-
-
 
     private void Movement()
     {
@@ -52,8 +48,8 @@ public class CharacterMovement : MonoBehaviour
         {
             float horizontalAxis = Input.GetAxisRaw("Horizontal");
             float verticalAxis = Input.GetAxisRaw("Vertical");
-
             Vector3 dir = new Vector3(horizontalAxis, 0f, verticalAxis);
+            print(dir.magnitude);
 
             if(dir.magnitude >= 0.1f)
             {
@@ -63,14 +59,12 @@ public class CharacterMovement : MonoBehaviour
                 if(_playerMaster.movementState != EMovementState.SWINGING || _playerMaster.movementState != EMovementState.PUSHING)
                     transform.rotation = Quaternion.Euler(0f, angle, 0f);
 
-                Vector3 movDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward; 
-                Vector3 movVector = movDir * movSpeed;
-                
-                _rigidbody.velocity = new Vector3(movVector.x, movVector.y + _rigidbody.velocity.y, movVector.z);
+                Vector3 movDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;                 
+                _rigidbody.MovePosition(_rigidbody.position + movDir * movSpeed * Time.fixedDeltaTime);
             }
             else
             {
-                _rigidbody.velocity = new Vector3(0f, _rigidbody.velocity.y, 0f);
+               _rigidbody.velocity = new Vector3(0f, _rigidbody.velocity.y, 0f);
             }
         }
     }
