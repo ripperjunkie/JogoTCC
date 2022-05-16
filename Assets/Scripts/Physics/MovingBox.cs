@@ -14,13 +14,11 @@ public class MovingBox : MonoBehaviour
     {
         if (transform.position.x < _xMinDistance)
         {
-            Debug.Log("indo");
             indo = true;
 
         }
         if (transform.position.x > _xMaxDistance)
         {
-            Debug.Log("vindo");
             indo = false;
 
         }
