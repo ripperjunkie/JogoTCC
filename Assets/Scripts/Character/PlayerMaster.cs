@@ -3,13 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+public enum ECollectibe
+{
+    COUCH,
+    TABLE,
+    PENCIL
+}
+
+
 public class PlayerMaster : MonoBehaviour
 {
     public EMovementState movementState;
 
     [SerializeField] private GameObject _canvasPrefab;
     public CanvasMaster canvasMaster;
-
 
     [SerializeField] private bool _isDebug;
     private Rigidbody _rb;
@@ -19,12 +26,19 @@ public class PlayerMaster : MonoBehaviour
     private bool _canEquipYoyo = true;
     public bool GetIsYoyoActive { get => _isYoyoActive; }
 
-
     public SaveSystem saveSystem = new SaveSystem();
     public bool loadSaveData;
     public Vector3 checkpointLocation;
     public GameObject yoyoMesh;
 
+    public Dictionary<ECollectibe, bool> collectiblesFound = new Dictionary<ECollectibe, bool>();
+
+    public PlayerMaster()
+    {
+        //collectiblesFound.Add(ECollectibe.COUCH, true);
+        //collectiblesFound.Add(ECollectibe.TABLE, true);
+        //collectiblesFound.Add(ECollectibe.PENCIL, false);
+    }
 
     private void Awake()
     {
@@ -49,6 +63,15 @@ public class PlayerMaster : MonoBehaviour
         if(loadSaveData)
         {
             Load();
+        }
+    }
+
+    [ContextMenu("Dummy Debug")]
+    public void DummyDebug()
+    {
+        foreach(var item in collectiblesFound)
+        {
+            print(item);
         }
     }
 

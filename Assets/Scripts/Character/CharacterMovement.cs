@@ -49,7 +49,7 @@ public class CharacterMovement : MonoBehaviour
             float horizontalAxis = Input.GetAxisRaw("Horizontal");
             float verticalAxis = Input.GetAxisRaw("Vertical");
             Vector3 dir = new Vector3(horizontalAxis, 0f, verticalAxis);
-            print(dir.magnitude);
+            
 
             if(dir.magnitude >= 0.1f)
             {

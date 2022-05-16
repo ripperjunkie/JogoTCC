@@ -3,7 +3,7 @@ using UnityEngine;
 public class ThrowYoyo : MonoBehaviour
 {
     [SerializeField] private bool _debugCollider;
-    private GameObject _destroyObject;
+    private GameObject _objectToInteract;
     private Animator _animator;
     private MeshRenderer _meshRenderer;
     private PlayerMaster _playerMaster;
@@ -32,9 +32,10 @@ public class ThrowYoyo : MonoBehaviour
 
         if(_playerMaster.GetIsYoyoActive)
         {
-            if (_destroyObject)
+            if (_objectToInteract)
             {
-                Destroy(_destroyObject);
+                //Destroy(_objectToInteract);
+                _objectToInteract.GetComponent<IInteractable<PlayerMaster>>().OnInteract(_playerMaster);
                 if (_animator)
                 {
                     _animator.SetTrigger("Throw");
@@ -45,17 +46,17 @@ public class ThrowYoyo : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if(other.CompareTag("Destructible"))
+        if(other.GetComponent<IInteractable<PlayerMaster>>() != null)
         {
-            _destroyObject = other.gameObject;
+            _objectToInteract = other.gameObject;
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if(other.CompareTag("Destructible"))
+        if(other.GetComponent<IInteractable<PlayerMaster>>() != null)
         {
-            _destroyObject = null;
+            _objectToInteract = null;
         }
     }
 
