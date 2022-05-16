@@ -18,7 +18,6 @@ public class PauseMenu : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.P))
         {
-            print("pause!!");
             if(isGamePaused)
             {
                 Unpause();
@@ -34,7 +33,6 @@ public class PauseMenu : MonoBehaviour
     public void Pause()
     {
         isGamePaused = true;
-        print("pause");
         Time.timeScale = 0f;
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.Confined;

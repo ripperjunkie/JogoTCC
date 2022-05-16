@@ -34,7 +34,6 @@ public class ThrowYoyo : MonoBehaviour
         {
             if (_objectToInteract)
             {
-                //Destroy(_objectToInteract);
                 _objectToInteract.GetComponent<IInteractable<PlayerMaster>>().OnInteract(_playerMaster);
                 if (_animator)
                 {
