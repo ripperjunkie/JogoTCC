@@ -4,17 +4,30 @@ using System.Reflection;
 using System.Linq;
 using System.Collections.Generic;
 
+//https://www.youtube.com/watch?v=vLKeqS1PeTU (usado como referencia)
+
 public class DebugController : MonoBehaviour
 {
-
-
-    bool showConsole;
-    public string text;
-    public string[] commandsList = {"Hello", "Bye"};
-
+    private bool _showConsole;
+    private string _text;
     public List<MemberInfo> commandAttributes = new List<MemberInfo>();
+    private PlayerMaster _playerMaster;
+
+    public static bool flyMode;
+    public static bool godMode;
 
     private void Awake()
+    {
+        FindAndRegisterAttributes();
+        _playerMaster = GetComponent<PlayerMaster>();
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Tab)) OnToggleDebug();
+    }
+
+    private void FindAndRegisterAttributes()
     {
         Assembly[] assemblies = AppDomain.CurrentDomain.GetAssemblies();
         foreach (Assembly assembly in assemblies)
@@ -31,51 +44,51 @@ public class DebugController : MonoBehaviour
                     if (member.CustomAttributes.ToArray().Length > 0)
                     {
                         CommandAttribute attribute = member.GetCustomAttribute<CommandAttribute>();
-                        if(attribute != null)
+                        if (attribute != null)
                         {
-                           // member.Invoke(attribute, null);
                             commandAttributes.Add(member);
                         }
                     }
                 }
             }
         }
+    }
 
-        foreach(MethodInfo item in commandAttributes)
+#region Commands
+
+    [CommandAttribute]
+    public void Fly()
+    {
+        print("FlyMode");
+        flyMode = !flyMode;
+        if(flyMode)
         {
-           print("Name: " + item.Name);
-            item.Invoke(this, new object[] { 100});
-            //print("Module: " + item.Module);
-            //print("MemberType: " + item.MemberType);
-            //print("MetadataToken: " + item.MetadataToken);
-            //print("CustomAttributes: " + item.CustomAttributes);
-            //print("DeclaringType: " + item.DeclaringType);
+            //fly
+            CharFly();
+            return;
         }
-    }
-
-    [ContextMenu("Dummy Test")]
-    public void DummyTest()
-    {
-       
-    }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Tab)) OnToggleDebug();
+        CharStopFly();
+        
     }
 
     [CommandAttribute]
-    public void TestCommand(int health = 0)
+    public void God()
     {
-        print("TestCommand" + " health: " + health);
+        print("God");
     }
+
+    public void OpenLevel(string _levelName)
+    {
+        print("Level to open " + _levelName);
+    }
+
+#endregion
 
     [ContextMenu("Debug")]
     public void OnToggleDebug()
     {
-     //   print("Debug");
-        showConsole = !showConsole;
-        if (!showConsole)
+        _showConsole = !_showConsole;
+        if (!_showConsole)
         {
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Confined;
@@ -83,11 +96,10 @@ public class DebugController : MonoBehaviour
 
     }
 
-
     private void OnGUI()
     {
 
-       if(!showConsole) { return; }
+       if(!_showConsole) { return; }
 
         float y = 0f;
         Cursor.visible = true;
@@ -95,30 +107,77 @@ public class DebugController : MonoBehaviour
 
         GUI.Box(new Rect(0, y, Screen.width, 30), "");
         GUI.backgroundColor = Color.black;
-        text = GUI.TextField(new Rect(10f, y + 5f, Screen.width - 20f, 20f), text);
+        _text = GUI.TextField(new Rect(10f, y + 5f, Screen.width - 20f, 20f), _text);
 
         if (Event.KeyboardEvent("Enter") == null) return;
 
         if(Event.current.Equals(Event.KeyboardEvent("Enter")))
         {
             //check for string
-            HandleInput(text);
+            HandleInput(_text);
         }
     }
 
     private void HandleInput(string _id)
     {
-        foreach(var item in commandsList)
+        foreach (MethodInfo _item in commandAttributes)
         {
-            if(_id.Equals(item))
+            if(_id == _item.Name)
             {
-                print("Valid command");
-                text = "";
+                //_item.Invoke(this, new object[] {}); //invoke method where attributes is residing 
+                _item.Invoke(this, null);
+                ClearConsole();
             }
             else
             {
                 print("invalid command");
             }
+        }
+
+    }
+
+    public void ClearConsole()
+    {
+        _text = "";
+    }
+
+    [ContextMenu("Debug Commands List")]
+    public void SeeCommandsList()
+    {
+        foreach (MethodInfo _item in commandAttributes)
+        {
+            print(_item.Name);
+        }
+    }
+
+    public void CharFly()
+    {
+        Collider collider = GetComponent<Collider>();
+        Rigidbody rb = GetComponent<Rigidbody>();
+
+        if (collider)
+        {
+            collider.isTrigger = true;
+
+        }
+        if(rb)
+        {
+            rb.useGravity = false;
+        }
+    }
+
+    public void CharStopFly()
+    {
+        Collider collider = GetComponent<Collider>();
+        Rigidbody rb = GetComponent<Rigidbody>();
+
+        if (collider)
+        {
+            collider.isTrigger = false;
+        }
+        if (rb)
+        {
+            rb.useGravity = true;
         }
     }
 }

@@ -34,7 +34,8 @@ public class CharacterMovement : MonoBehaviour
     private void FixedUpdate()
     {
         Movement();
-        if(debugParams)
+        FlyMovement();
+        if (debugParams)
         {
             print("Hit ground? " + HitGround());
             print("Hit bridge? " + HitBrige());
@@ -69,6 +70,22 @@ public class CharacterMovement : MonoBehaviour
         }
     }
 
+    //DEBUG ONLY!
+#if DEVELOPMENT_BUILD || UNITY_EDITOR
+    private void FlyMovement()
+    {
+        if (!DebugController.flyMode) return;
+
+        print("fly movement ");
+        Rigidbody rb = GetComponent<Rigidbody>();
+        float verticalAxis = Input.GetAxisRaw("Fly");
+        print(verticalAxis);
+
+        if(rb)
+            rb.velocity = Vector3.up * movSpeed * verticalAxis;
+    }
+
+#endif
 
     public bool HitGround()
     {

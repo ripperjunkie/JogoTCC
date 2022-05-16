@@ -59,6 +59,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _objectMove: {fileID: 0}
+  _animator: {fileID: 0}
   initialPosition: {fileID: 0}
 --- !u!1 &1852600264
 GameObject:
@@ -367,6 +368,7 @@ GameObject:
   - component: {fileID: 342331284}
   - component: {fileID: 689882537844228051}
   - component: {fileID: 6345371008267886537}
+  - component: {fileID: 669775853}
   m_Layer: 0
   m_Name: PlayerMaster
   m_TagString: Player
@@ -579,7 +581,7 @@ MonoBehaviour:
   _isDebug: 0
   saveSystem:
     playerMasterRef: {fileID: 0}
-  loadSaveData: 1
+  loadSaveData: 0
   checkpointLocation: {x: 0, y: 0, z: 0}
   yoyoMesh: {fileID: 7694847490876432402}
 --- !u!114 &7915954509333265850
@@ -702,6 +704,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerMaster: {fileID: 0}
+--- !u!114 &669775853
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7915954509333265801}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c252000d497ee1b498e56adaecbdb8b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7915954510667767131
 GameObject:
   m_ObjectHideFlags: 0
