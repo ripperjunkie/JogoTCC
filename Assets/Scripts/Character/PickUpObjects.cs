@@ -8,7 +8,7 @@ public class PickUpObjects : MonoBehaviour
  private  bool bOnCollsion = false;
  private Transform _arms = null;
  public GameObject _objectMove = null;
-private Animator _animator;
+public Animator _animator;
 private BoxCollider _boxCollider;
 private Rigidbody _rBBox;
 public Transform initialPosition = null;
@@ -16,7 +16,7 @@ public Transform initialPosition = null;
  void Start()
  {
    _arms = GameObject.Find("PickUP").GetComponent<Transform>();
-   _animator = GetComponentInParent<Animator>();
+ //  _animator = GetComponent<Animator>();
  }
   
   void OnTriggerEnter(Collider col)
@@ -43,7 +43,8 @@ public Transform initialPosition = null;
         if(Input.GetKeyDown(KeyCode.E) && !bOnMove && bOnCollsion)
         {  
          
-           StartCoroutine(MovingObject());  
+           StartCoroutine(MovingObject());
+           _animator.SetTrigger("pick_UP");  
         }
         else if(Input.GetKeyDown(KeyCode.E) && bOnMove)
         {
