@@ -13,8 +13,11 @@ public class DebugController : MonoBehaviour
     public List<MemberInfo> commandAttributes = new List<MemberInfo>();
     private PlayerMaster _playerMaster;
 
+    public float _time = 1f;
+
     public static bool flyMode;
     public static bool godMode;
+
 
     private void Awake()
     {
@@ -82,6 +85,12 @@ public class DebugController : MonoBehaviour
         print("Level to open " + _levelName);
     }
 
+    [CommandAttribute]
+    public void Slomo(float _timeSpeed)
+    {
+        Time.timeScale = _timeSpeed;
+    }
+
 #endregion
 
     [ContextMenu("Debug")]
@@ -122,10 +131,28 @@ public class DebugController : MonoBehaviour
     {
         foreach (MethodInfo _item in commandAttributes)
         {
-            if(_id == _item.Name)
+            string id = _id;
+            if(_id.Contains(' '))
             {
-                //_item.Invoke(this, new object[] {}); //invoke method where attributes is residing 
-                _item.Invoke(this, null);
+                id = _id.Remove(_id.IndexOf(' '));
+            }
+            if (id == _item.Name)
+            {
+                int param = 0;
+                if (_id.Contains(' '))
+                {
+                    param = Convert.ToInt32(_id.Remove(0, _id.IndexOf(' ')));
+                }
+                                
+                if(_item.GetParameters().Length > 0)
+                {
+                    _item.Invoke(this, new object[] { param });
+                }
+                else
+                {
+                    _item.Invoke(this, null);
+                }
+                
                 ClearConsole();
             }
             else

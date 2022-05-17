@@ -34,7 +34,9 @@ public class CharacterMovement : MonoBehaviour
     private void FixedUpdate()
     {
         Movement();
+#if DEVELOPMENT_BUILD || UNITY_EDITOR
         FlyMovement();
+#endif
         if (debugParams)
         {
             print("Hit ground? " + HitGround());
