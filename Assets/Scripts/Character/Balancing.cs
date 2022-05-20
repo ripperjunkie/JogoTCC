@@ -14,7 +14,7 @@ public class Balancing : MonoBehaviour
     private void Awake()
     {
         _charMovement = GetComponent<CharacterMovement>();
-        _defaultSpeed = _charMovement.movSpeed;
+        _defaultSpeed = _charMovement.currentSpeed;
     }
 
     void Start()
@@ -44,13 +44,13 @@ public class Balancing : MonoBehaviour
     public void StartBalance()
     {
         _playerMaster.movementState = EMovementState.BALANCING;
-        _charMovement.movSpeed = _balanceSpeed;
+        _charMovement.currentSpeed = _balanceSpeed;
     }
 
     public void StopBalance()
     {
         _playerMaster.movementState = EMovementState.NONE;
-        _charMovement.movSpeed = _defaultSpeed;
+        _charMovement.currentSpeed = _defaultSpeed;
 
     }
 }

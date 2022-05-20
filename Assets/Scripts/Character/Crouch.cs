@@ -16,7 +16,7 @@ public class Crouch : MonoBehaviour
         _defaultCapsuleHeight = GetComponent<CapsuleCollider>().height;
         _capsuleCollider = GetComponent<CapsuleCollider>();
         _charMovement = GetComponent<CharacterMovement>();
-        _defaultSpeed = _charMovement.movSpeed;
+        _defaultSpeed = _charMovement.currentSpeed;
     }
 
     private void Start()
@@ -47,14 +47,15 @@ public class Crouch : MonoBehaviour
     {
         _playerMaster.movementState = EMovementState.CROUCHING;
         _capsuleCollider.height = _crouchCapsuleHeight;
-        _charMovement.movSpeed = _crouchSpeed;
+        _charMovement.currentSpeed = _crouchSpeed;
     }
 
     public void StopCrouch()
     {
         _playerMaster.movementState = EMovementState.NONE;
         _capsuleCollider.height = _defaultCapsuleHeight;
-        _charMovement.movSpeed = _defaultSpeed;
+        _charMovement.currentSpeed = _defaultSpeed;
+        print("StopCrouch");
 
     }
 }

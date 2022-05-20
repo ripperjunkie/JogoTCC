@@ -21,7 +21,7 @@ public class MoveObjects : MonoBehaviour
     {
         _rBBox = gameObject.GetComponent<Rigidbody>();
         _player = GameObject.Find("PlayerMaster");
-        _speedInitial = _player.GetComponent<CharacterMovement>().movSpeed;
+        _speedInitial = _player.GetComponent<CharacterMovement>().currentSpeed;
         _animator = _player.GetComponentInChildren<Animator>();
         _fixedJ = GetComponent<FixedJoint>();
         _audio = GetComponent<AudioSource>();

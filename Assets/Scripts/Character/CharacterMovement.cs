@@ -7,9 +7,8 @@ public class CharacterMovement : MonoBehaviour
     [SerializeField] private Camera _camera;
 
     [Header("Movement Params")]
-    public float movSpeed = 20f;
-    public float sprintSpeed;
-    private float initialDefaultSpeed;
+    public float currentSpeed = 20f;
+    public float initialDefaultSpeed;
     [SerializeField] private float _rotateSpeed = 20f;
     [SerializeField] private float groundSphereRadius = 2f;
     [SerializeField] private LayerMask groudLayerMask;
@@ -29,7 +28,7 @@ public class CharacterMovement : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         _rigidbody = GetComponent<Rigidbody>();
         _playerMaster = GetComponent<PlayerMaster>();
-        initialDefaultSpeed = movSpeed;
+        initialDefaultSpeed = currentSpeed;
 
     }
 
@@ -43,22 +42,6 @@ public class CharacterMovement : MonoBehaviour
         {
             print("Hit ground? " + HitGround());
             print("Hit bridge? " + HitBrige());
-        }
-    }
-
-    //não está pronto ainda
-    private void Sprint()
-    {
-        if (ClimbLadder.isClimbingLadder || _playerMaster.movementState == EMovementState.SWINGING || 
-            _playerMaster.movementState == EMovementState.CROUCHING) return;
-
-        if(Input.GetButtonDown("Sprint"))
-        {
-            movSpeed = sprintSpeed;
-        }
-        else
-        {
-            movSpeed = initialDefaultSpeed;
         }
     }
 
@@ -81,7 +64,7 @@ public class CharacterMovement : MonoBehaviour
                     transform.rotation = Quaternion.Euler(0f, angle, 0f);
 
                 Vector3 movDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;                 
-                _rigidbody.MovePosition(_rigidbody.position + movDir * movSpeed * Time.fixedDeltaTime);
+                _rigidbody.MovePosition(_rigidbody.position + movDir * currentSpeed * Time.fixedDeltaTime);
             }
             else
             {
@@ -102,7 +85,7 @@ public class CharacterMovement : MonoBehaviour
         print(verticalAxis);
 
         if(rb)
-            rb.velocity = Vector3.up * movSpeed * verticalAxis;
+            rb.velocity = Vector3.up * currentSpeed * verticalAxis;
     }
 
 #endif

@@ -97,14 +97,11 @@ public class PlayerMaster : MonoBehaviour
         {
             if(movementState != EMovementState.SWINGING && movementState != EMovementState.CLIMBING && 
                 movementState != EMovementState.CROUCHING && movementState != EMovementState.BALANCING && 
-                movementState != EMovementState.RIDING && movementState != EMovementState.RAPPEL)
+                movementState != EMovementState.RIDING && movementState != EMovementState.RAPPEL && movementState != EMovementState.SPRINTING)
             {
-                if (_rb.velocity.magnitude != 0f && _charMovement.HitGround())
+                if (_rb.velocity.magnitude != 0f && _charMovement.HitGround() || _rb.velocity.magnitude != 0f && _charMovement.HitBrige())
                 {
-                    movementState = EMovementState.WALKING;
-                }
-                if (_rb.velocity.magnitude != 0f && _charMovement.HitBrige())
-                {
+                    // _ = _charMovement.currentSpeed == _charMovement.sprintSpeed ? movementState = EMovementState.SPRINTING : movementState = EMovementState.WALKING;
                     movementState = EMovementState.WALKING;
                 }
                 if (_rb.velocity.y != 0f && !_charMovement.HitGround())
