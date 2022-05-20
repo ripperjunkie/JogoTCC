@@ -3,12 +3,13 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class CharacterMovement : MonoBehaviour
 {
-
     [Header("Objects Assignments")]
     [SerializeField] private Camera _camera;
 
     [Header("Movement Params")]
     public float movSpeed = 20f;
+    public float sprintSpeed;
+    private float initialDefaultSpeed;
     [SerializeField] private float _rotateSpeed = 20f;
     [SerializeField] private float groundSphereRadius = 2f;
     [SerializeField] private LayerMask groudLayerMask;
@@ -28,6 +29,7 @@ public class CharacterMovement : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         _rigidbody = GetComponent<Rigidbody>();
         _playerMaster = GetComponent<PlayerMaster>();
+        initialDefaultSpeed = movSpeed;
 
     }
 
@@ -41,6 +43,22 @@ public class CharacterMovement : MonoBehaviour
         {
             print("Hit ground? " + HitGround());
             print("Hit bridge? " + HitBrige());
+        }
+    }
+
+    //não está pronto ainda
+    private void Sprint()
+    {
+        if (ClimbLadder.isClimbingLadder || _playerMaster.movementState == EMovementState.SWINGING || 
+            _playerMaster.movementState == EMovementState.CROUCHING) return;
+
+        if(Input.GetButtonDown("Sprint"))
+        {
+            movSpeed = sprintSpeed;
+        }
+        else
+        {
+            movSpeed = initialDefaultSpeed;
         }
     }
 
