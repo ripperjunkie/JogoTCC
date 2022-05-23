@@ -79,6 +79,10 @@ public class PlayerMaster : MonoBehaviour
     public void Save()
     {
         saveSystem.SaveCheckpoint();
+        if(canvasMaster)
+        {
+            canvasMaster.SaveFeedbackIcon();
+        }
     }
     public void Load()
     {

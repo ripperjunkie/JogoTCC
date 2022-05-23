@@ -12,6 +12,8 @@ public class CanvasMaster : MonoBehaviour
     [Header("Reference")]
     public PauseMenu pauseMenu;
 
+    public Animator saveFeedbackAnim;
+
     private void Start()
     {
         if(pausePanel)
@@ -41,6 +43,19 @@ public class CanvasMaster : MonoBehaviour
         if(pauseMenu)
         {
             pauseMenu.Unpause();
+        }
+    }
+
+    public void SaveFeedbackIcon()
+    {
+        if (saveFeedbackAnim)
+        {
+            saveFeedbackAnim.SetTrigger("Play");
+            print("saveFeedbackAnim");
+        }
+        else
+        {
+            print("invalid saveFeedbackAnim");
         }
     }
 }
