@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Animator))]
@@ -6,27 +7,30 @@ public class CharacterAnimation : MonoBehaviour
 {
     [SerializeField] private Animator _animator;
     [SerializeField] private Rigidbody _rigidbody;
-    [SerializeField] private float _currentSpeed;
 
     [SerializeField] private float _lerpRigidSpeed = 3f;
     private float _groundLocoSpeed = 0f;
     private PlayerMaster _playerMasterRef;
+    private CharacterMovement _charMovement;
 
 
     private void Start()
     {
         _playerMasterRef = GetComponentInParent<PlayerMaster>();
+        _charMovement = GetComponentInParent<CharacterMovement>();  
 
     }
 
 
+
     private void Update()
     {
+        StartCoroutine(CalculateSpeed());
         GroundLocomotion();      
         if(_animator && _playerMasterRef)
         {
             _animator.SetInteger("anim_state", (int)_playerMasterRef.movementState);
-            _animator.SetLayerWeight(1, _ = _playerMasterRef.GetIsYoyoActive ? 1f : 0f);
+            //_animator.SetLayerWeight(1, _ = _playerMasterRef.GetIsYoyoActive ? 1f : 0f);
         }
         if (_rigidbody)
         {
@@ -37,14 +41,21 @@ public class CharacterAnimation : MonoBehaviour
     }
 
     private void GroundLocomotion()
-    {
-        _groundLocoSpeed = Mathf.Lerp(_animator.GetFloat("ground_mov_speed"), _rigidbody.velocity.magnitude, _lerpRigidSpeed);
+    {     
         //get character speed
         if (_rigidbody)
         {
-            _animator.SetFloat("ground_mov_speed", _groundLocoSpeed);
+            _animator.SetFloat("ground_mov_speed", _groundLocoSpeed, _lerpRigidSpeed, Time.deltaTime);
         }
-        //print(_rigidbody.velocity.magnitude);
+        print("currentSpeed: " + _groundLocoSpeed);
+
+    }
+
+    public IEnumerator CalculateSpeed()
+    {
+        Vector3 lasPos = transform.position;
+        yield return new WaitForFixedUpdate();
+        _groundLocoSpeed = (lasPos - transform.position).magnitude / Time.deltaTime;
 
     }
 

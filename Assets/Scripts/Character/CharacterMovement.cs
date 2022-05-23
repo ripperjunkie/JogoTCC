@@ -63,7 +63,7 @@ public class CharacterMovement : MonoBehaviour
                 if(_playerMaster.movementState != EMovementState.SWINGING || _playerMaster.movementState != EMovementState.PUSHING)
                     transform.rotation = Quaternion.Euler(0f, angle, 0f);
 
-                Vector3 movDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;                 
+                Vector3 movDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;               
                 _rigidbody.MovePosition(_rigidbody.position + movDir * currentSpeed * Time.fixedDeltaTime);
             }
             else
