@@ -5,14 +5,13 @@ using UnityEngine;
 public class PuzzleSeesaw : MonoBehaviour
 {
      [SerializeField] private int _numberCollider;
-     private bool ss = false;
     public List <GameObject> objts;
     public TriggerEventFase  triggerEvent;
     public ResetTriggerEventFase resetTriggerEvent;
 
     [SerializeField] private string tag;
 
-      void OnTriggerStay(Collider  col)
+      void OnTriggerEnter(Collider  col)
       {
         if(col.CompareTag(tag))
         {
@@ -34,12 +33,17 @@ public class PuzzleSeesaw : MonoBehaviour
           }
         }
       }
+      
+  
     private void Remove()
-    {
+    {    
+       if(objts.Count != _numberCollider)
+      {
         if (resetTriggerEvent != null)
         {
-            resetTriggerEvent.Invoke();
+            resetTriggerEvent.Invoke();         
         }
+      }
     }
     void Move()
     {
