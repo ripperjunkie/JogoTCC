@@ -5,9 +5,25 @@ using UnityEngine.SceneManagement;
 
 public class CanvasMaster : MonoBehaviour
 {
+    [Header("Panel")]
     public GameObject pausePanel;
     public GameObject endGamePanel;
+    [Space]
+    [Header("Reference")]
     public PauseMenu pauseMenu;
+
+    private void Start()
+    {
+        if(pausePanel)
+        {
+            pausePanel.SetActive(false);
+        }
+
+        if(endGamePanel)
+        {
+            endGamePanel.SetActive(false);
+        }
+    }
 
     public void Restart()
     {
