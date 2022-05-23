@@ -58,8 +58,8 @@ public Transform initialPosition = null;
           bOnMove = true;
   
            yield return new WaitForSeconds(0.6f);
-           _rBBox.isKinematic = true;
-          _boxCollider.enabled = false;
+         _rBBox.isKinematic = true;
+         _boxCollider.isTrigger = true;
          _objectMove.transform.position = _arms.transform.position;
          _objectMove.transform.SetParent(_arms);
       }
@@ -70,7 +70,7 @@ public Transform initialPosition = null;
          bOnMove = false;
          bOnCollsion = false;
         _objectMove.transform.SetParent(null);
-        _boxCollider.enabled = true;
+        _boxCollider.isTrigger = false;
         _rBBox.isKinematic = false;
         _boxCollider = null;
         _objectMove = null;           
