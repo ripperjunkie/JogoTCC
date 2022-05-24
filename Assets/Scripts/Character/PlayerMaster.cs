@@ -14,6 +14,7 @@ public enum ECollectibe
 public class PlayerMaster : MonoBehaviour
 {
     public EMovementState movementState;
+    public CharacterData characterData;
 
     [SerializeField] private GameObject _canvasPrefab;
     public CanvasMaster canvasMaster;

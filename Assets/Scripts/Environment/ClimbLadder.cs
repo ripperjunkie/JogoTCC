@@ -18,6 +18,10 @@ public class ClimbLadder : MonoBehaviour
     {
         _rb = GetComponent<Rigidbody>();
         _playerMaster = GetComponent<PlayerMaster>();
+        if (_playerMaster && _playerMaster.characterData)
+        {
+            _climbSpeed = _playerMaster.characterData.climbSpeed;
+        }
     }
 
     private void OnTriggerEnter(Collider other)

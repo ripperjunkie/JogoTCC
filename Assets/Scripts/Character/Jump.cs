@@ -4,18 +4,23 @@ using UnityEngine;
 
 public class Jump : MonoBehaviour
 {
+    [SerializeField] private float _jumpForce = 20f;
     private CharacterMovement _charMovement;
     private Rigidbody _rigidbody;
-    [SerializeField] private float _jumpForce = 20f;
+    private PlayerMaster _playerMaster;
 
-    void Start()
+    private void Awake()
     {
         _charMovement = GetComponent<CharacterMovement>();
         _rigidbody = GetComponent<Rigidbody>();
-
-
+        _playerMaster = GetComponent<PlayerMaster>();
+        if (_playerMaster)
+        {
+            _jumpForce = _playerMaster.characterData.jumpHeight;
+        }
     }
-    void Update()
+
+    private void Update()
     {
         ApplyJump();
         

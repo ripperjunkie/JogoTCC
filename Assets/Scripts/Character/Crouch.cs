@@ -2,26 +2,26 @@ using UnityEngine;
 
 public class Crouch : MonoBehaviour
 {
-    private PlayerMaster _playerMaster;
     [SerializeField] private float _crouchCapsuleHeight = 1.29f;
     [SerializeField] private float _crouchSpeed;
     
     private float _defaultCapsuleHeight;
     private CapsuleCollider _capsuleCollider;
     private CharacterMovement _charMovement;
+    private PlayerMaster _playerMaster;
     private float _defaultSpeed;
 
     private void Awake()
     {
+        _playerMaster = GetComponent<PlayerMaster>();
         _defaultCapsuleHeight = GetComponent<CapsuleCollider>().height;
         _capsuleCollider = GetComponent<CapsuleCollider>();
         _charMovement = GetComponent<CharacterMovement>();
         _defaultSpeed = _charMovement.currentSpeed;
-    }
-
-    private void Start()
-    {
-        _playerMaster = GetComponent<PlayerMaster>();
+        if(_playerMaster && _playerMaster.characterData)
+        {
+            _crouchSpeed = _playerMaster.characterData.crouchSpeed;
+        }
     }
 
     private void Update()

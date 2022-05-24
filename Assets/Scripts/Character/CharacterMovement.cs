@@ -28,6 +28,13 @@ public class CharacterMovement : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         _rigidbody = GetComponent<Rigidbody>();
         _playerMaster = GetComponent<PlayerMaster>();
+        if(_playerMaster)
+        {
+            if(_playerMaster.characterData)
+            {
+                currentSpeed = _playerMaster.characterData.jogSpeed;
+            }
+        }
         initialDefaultSpeed = currentSpeed;
 
     }

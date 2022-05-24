@@ -6,23 +6,19 @@ public class Sprint : MonoBehaviour
 {
     private PlayerMaster _playerMaster;
     [SerializeField] private float _sprintSpeed;
-
-    private float _defaultCapsuleHeight;
-    private CapsuleCollider _capsuleCollider;
     private CharacterMovement _charMovement;
-    private float _defaultSpeed;
 
     private void Awake()
     {
-        _defaultCapsuleHeight = GetComponent<CapsuleCollider>().height;
-        _capsuleCollider = GetComponent<CapsuleCollider>();
         _charMovement = GetComponent<CharacterMovement>();
-        _defaultSpeed = _charMovement.currentSpeed;
-    }
-
-    private void Start()
-    {
         _playerMaster = GetComponent<PlayerMaster>();
+        if (_playerMaster)
+        {
+            if (_playerMaster.characterData)
+            {
+                _sprintSpeed = _playerMaster.characterData.sprintSpeed;
+            }
+        }
     }
 
     private void Update()
