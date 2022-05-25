@@ -11,9 +11,6 @@ public class EnemyMoviment : MonoBehaviour
 {
     private EnemyManager enemyManager;
 
-    public bool activeForDistance;
-    public bool activeForCollider;
-
     public float minDistance;
     public float maxDistanceToChasing;
 
@@ -22,6 +19,12 @@ public class EnemyMoviment : MonoBehaviour
     private GameObject player;
     private NavMeshAgent navMesh;
 
+    //patroll
+    public Transform[] walkPoints;
+    private int toGo;
+    public string nameAnimationWalk, nameAnimationIdle;
+    public float idleTime;
+    private bool walkPointSet = true;
 
 
     private Animator _animator;
@@ -36,46 +39,76 @@ public class EnemyMoviment : MonoBehaviour
 
     void Update()
     {
-        distanciaPlayer = Vector3.Distance(player.transform.position, transform.position);
-        Debug.Log("Distancia Player:" + distanciaPlayer);
-        if (activeForDistance && distanciaPlayer < maxDistanceToChasing)
+        if(enemyManager.movementState == EMovementStateEnemy.CHASING)
         {
-            StartChasing();
-            Debug.Log("perseguindo Player:");
+            Chasing();
+            return;
+        }
+        Patroling();
+
+    }
+
+    private void Chasing()
+    {
+        distanciaPlayer = Vector3.Distance(player.transform.position, transform.position);
+        if (distanciaPlayer < minDistance)
+        {
 
         }
-        if (distanciaPlayer <= minDistance || distanciaPlayer > maxDistanceToChasing)
+        if (distanciaPlayer < maxDistanceToChasing)
+        {
+            
+            navMesh.destination = player.transform.position;
+            _animator.SetFloat("ground_mov_speed", 5);
+        }
+        else
         {
             StopChasing();
-            Debug.Log("perseguindo Player:");
         }
     }
 
-    private void OnTriggerEnter(Collider objectCollider)
-    {
-        //if (objectCollider.tag == "Player" && activeForCollider)
-        //{
-        //    navMesh.destination = player.transform.position;
-        //}
-
-            if (objectCollider.gameObject.CompareTag("Player"))
-            {
-                FindObjectOfType<CanvasFadeAnimation>().PlayFadeOut();
-            }
-    }
-
-    private void StartChasing()
-    {
-        enemyManager.movementState = EMovementStateEnemy.CHASING;
-        navMesh.destination = player.transform.position;
-        _animator.SetFloat("ground_mov_speed", 5);
-    }
     private void StopChasing()
     {
-        enemyManager.movementState = EMovementStateEnemy.IDLE;
+        enemyManager.movementState = EMovementStateEnemy.PATROL;
+        walkPointSet = true;
         navMesh.destination = transform.position;
         _animator.SetFloat("ground_mov_speed", 0);
-
     }
+
+    private void Patroling()
+    {
+        if (walkPointSet)
+        {
+            navMesh.SetDestination(walkPoints[toGo].position);
+            enemyManager.movementState = EMovementStateEnemy.PATROL;
+            //_animator.Play(nameAnimationWalk);
+            walkPointSet = false;
+        }
+
+
+        Vector3 distanceToWalkPoint = transform.position - walkPoints[toGo].position;
+
+        //chegou ao ponto
+        if (distanceToWalkPoint.magnitude < 1f && enemyManager.movementState != EMovementStateEnemy.IDLE)
+        {
+            //_animator.Play(nameAnimationIdle);
+            walkPointSet = false;
+            Invoke("NextPoint", idleTime);
+            enemyManager.movementState = EMovementStateEnemy.IDLE;
+        }
+    }
+    void NextPoint()
+    {
+        if (toGo+1 < walkPoints.Length)
+        {
+            toGo++;
+        }
+        else
+        {
+            toGo = 0;
+        }
+        walkPointSet = true;
+    }
+
 
 }

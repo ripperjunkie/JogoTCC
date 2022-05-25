@@ -11,19 +11,6 @@ public class EnemyManager : MonoBehaviour
     private CharacterController _charController;
 
 
-
-
-    private void Start()
-    {
-        
-    }
-
-    private void Update()
-    {
-
-    }
-
-
     public void ResetMovementState()
     {
         movementState = EMovementStateEnemy.NONE;

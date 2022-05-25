@@ -47,7 +47,7 @@ public class CharacterAnimation : MonoBehaviour
         {
             _animator.SetFloat("ground_mov_speed", _groundLocoSpeed, _lerpRigidSpeed, Time.deltaTime);
         }
-        print("currentSpeed: " + _groundLocoSpeed);
+        //print("currentSpeed: " + _groundLocoSpeed);
 
     }
 
