@@ -3,6 +3,7 @@ using System;
 using System.Reflection;
 using System.Linq;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
 //https://www.youtube.com/watch?v=vLKeqS1PeTU (usado como referencia)
 
@@ -27,7 +28,9 @@ public class DebugController : MonoBehaviour
 
     private void Update()
     {
+#if DEVELOPMENT_BUILD || UNITY_EDITOR
         if (Input.GetKeyDown(KeyCode.Tab)) OnToggleDebug();
+#endif
     }
 
     private void FindAndRegisterAttributes()
@@ -80,9 +83,17 @@ public class DebugController : MonoBehaviour
         print("God");
     }
 
+    [CommandAttribute]
     public void OpenLevel(string _levelName)
     {
-        print("Level to open " + _levelName);
+        //print("Level to open " + _levelName);
+        SceneManager.LoadScene(_levelName);
+    }
+
+    [CommandAttribute]
+    public void RestartLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().ToString());
     }
 
     [CommandAttribute]
@@ -138,15 +149,38 @@ public class DebugController : MonoBehaviour
             }
             if (id == _item.Name)
             {
-                int param = 0;
+                string param = "";
+                int number = 0;
                 if (_id.Contains(' '))
                 {
-                    param = Convert.ToInt32(_id.Remove(0, _id.IndexOf(' ')));
+                    if (_item.GetParameters().Length > 0)
+                    {
+                        //Isso só irá funcionar para comandos com apenas 1 parametro mas mt provavelmente
+                        //não teremos comandos com múltiplos parametros
+                        if (_item.GetParameters()[0].ParameterType == typeof(float))
+                        {
+                            number = Convert.ToInt32(_id.Remove(0, _id.IndexOf(' ')));
+
+                        }
+                        else if(_item.GetParameters()[0].ParameterType == typeof(string))
+                        {
+                            param = Convert.ToString(_id.Remove(0, _id.IndexOf(' ')));
+                        }
+
+                    }
                 }
-                                
-                if(_item.GetParameters().Length > 0)
+
+                if (_item.GetParameters().Length > 0)
                 {
-                    _item.Invoke(this, new object[] { param });
+                    if (_item.GetParameters()[0].ParameterType == typeof(float))
+                    {
+                        _item.Invoke(this, new object[] { number });
+                    }
+                    else if(_item.GetParameters()[0].ParameterType == typeof(string))
+                    {
+                        _item.Invoke(this, new object[] { param });
+
+                    }
                 }
                 else
                 {
@@ -173,7 +207,7 @@ public class DebugController : MonoBehaviour
     {
         foreach (MethodInfo _item in commandAttributes)
         {
-            print(_item.Name);
+            print(_item.Name);          
         }
     }
 

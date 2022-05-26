@@ -33,11 +33,11 @@ public class Crouch : MonoBehaviour
     {
         bool canCrouch = _playerMaster.movementState != EMovementState.CROUCHING && _playerMaster.movementState != EMovementState.INAIR;
 
-        if (Input.GetKeyDown(KeyCode.C) && canCrouch)
+        if (Input.GetKeyDown(KeyCode.LeftControl) && canCrouch)
         {
             StartCrouch();
         }
-        else if(Input.GetKeyDown(KeyCode.C) && _playerMaster.movementState == EMovementState.CROUCHING)
+        else if(Input.GetKeyDown(KeyCode.LeftControl) && _playerMaster.movementState == EMovementState.CROUCHING)
         {
             StopCrouch();
         }
@@ -54,7 +54,7 @@ public class Crouch : MonoBehaviour
     {
         _playerMaster.movementState = EMovementState.NONE;
         _capsuleCollider.height = _defaultCapsuleHeight;
-        _charMovement.currentSpeed = _defaultSpeed;
+        _charMovement.currentSpeed = _playerMaster.characterData.jogSpeed;
         print("StopCrouch");
 
     }

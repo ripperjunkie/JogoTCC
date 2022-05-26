@@ -38,6 +38,7 @@ public class PauseMenu : MonoBehaviour
         Cursor.lockState = CursorLockMode.Confined;
         if(_playerMaster && _playerMaster.canvasMaster)
         {
+            _playerMaster.canvasMaster.ResetPanels();
             _playerMaster.canvasMaster.pausePanel.SetActive(true);
         }
     }

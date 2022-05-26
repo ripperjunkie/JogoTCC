@@ -8,11 +8,14 @@ public class CanvasMaster : MonoBehaviour
     [Header("Panel")]
     public GameObject pausePanel;
     public GameObject endGamePanel;
+    public GameObject quitPanel;
     [Space]
     [Header("Reference")]
     public PauseMenu pauseMenu;
 
     public Animator saveFeedbackAnim;
+
+
 
     private void Start()
     {
@@ -24,6 +27,11 @@ public class CanvasMaster : MonoBehaviour
         if(endGamePanel)
         {
             endGamePanel.SetActive(false);
+        }
+
+        if (quitPanel)
+        {
+            quitPanel.SetActive(false);
         }
     }
 
@@ -56,6 +64,20 @@ public class CanvasMaster : MonoBehaviour
         else
         {
             print("invalid saveFeedbackAnim");
+        }
+    }
+
+    private void OnDisable()
+    {
+        ResetPanels();
+        print("Canvas deactivate");
+    }
+
+    public void ResetPanels()
+    {
+        if(quitPanel)
+        {
+            quitPanel.SetActive(false);
         }
     }
 }

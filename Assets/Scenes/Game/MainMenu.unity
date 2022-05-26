@@ -1750,7 +1750,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0be64b26e61608a4badb957ccfc48d39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneSelection: Game_Scene
+  sceneSelection: J3
   sfx: {fileID: 1348543007}
 --- !u!4 &1348543006
 Transform:
@@ -1880,7 +1880,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1464586012
 RectTransform:
   m_ObjectHideFlags: 0
