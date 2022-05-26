@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: MainCharacter
   m_EditorClassIdentifier: 
   jogSpeed: 5
-  sprintSpeed: 8
-  jumpHeight: 140
+  sprintSpeed: 9
+  jumpHeight: 120
   crouchSpeed: 2
   climbSpeed: 3
