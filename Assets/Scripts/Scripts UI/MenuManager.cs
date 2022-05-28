@@ -8,7 +8,7 @@ public class MenuManager : MonoBehaviour
 
     private void Start()
     {
-        
+        Time.timeScale = 1.0f;
     }
 
     private void Update()
