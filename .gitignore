@@ -58,8 +58,4 @@ sysinfo.txt
 # Crashlytics generated file
 crashlytics-build.properties
 
-UserSettings/Layouts/CurrentMaximizeLayout.dwlt
-UserSettings/Layouts/default-2021.dwlt
-UserSettings/EditorUserSettings.asset
-ProjectSettings/Packages/com.unity.probuilder/Settings.json
-ProjectSettings/Packages/com.unity.probuilder/Settings.json
+/EditorUserSettings/

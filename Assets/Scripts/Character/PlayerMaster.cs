@@ -16,7 +16,12 @@ public class PlayerMaster : MonoBehaviour
     public EMovementState movementState;
     public CharacterData characterData;
 
+    [Header("Prefabs")]
     [SerializeField] private GameObject _canvasPrefab;
+    [SerializeField] private GameObject _gameProgressPrefab;
+
+
+    [Header("References")]
     public CanvasMaster canvasMaster;
 
     [SerializeField] private bool _isDebug;
@@ -31,6 +36,7 @@ public class PlayerMaster : MonoBehaviour
     public bool loadSaveData;
     public Vector3 checkpointLocation;
     public GameObject yoyoMesh;
+    public GameProgress gameProgress;
 
     public Dictionary<ECollectibe, bool> collectiblesFound = new Dictionary<ECollectibe, bool>();
 
@@ -53,6 +59,16 @@ public class PlayerMaster : MonoBehaviour
                 canvasMaster = canvas;
             }
         }
+        if(_gameProgressPrefab)
+        {
+            GameObject go = Instantiate(_gameProgressPrefab);
+            if(go.GetComponent<GameProgress>() != null)
+            {
+                gameProgress = go.GetComponent<GameProgress>();
+            }
+
+        }
+
     }
 
     private void Start()
@@ -89,6 +105,14 @@ public class PlayerMaster : MonoBehaviour
     {
         saveSystem.LoadCheckpoint();
     }
+
+    [ContextMenu("save concept art")]
+    public void SaveConceptArt()
+    {
+        saveSystem.SaveConceptArt();
+    }
+
+
     [ContextMenu("Delete save")]
     public void DeleteSave()
     {

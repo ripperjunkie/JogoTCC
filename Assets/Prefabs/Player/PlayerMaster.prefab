@@ -580,6 +580,8 @@ MonoBehaviour:
   characterData: {fileID: 11400000, guid: 8f5cd0fa6689c874aa592b0722fce7c2, type: 2}
   _canvasPrefab: {fileID: 7859977834607946124, guid: db4a3437e09af594da3db1e8e480973d,
     type: 3}
+  _gameProgressPrefab: {fileID: 7546861194604698227, guid: 8310acf0ed740ad49a256a8779bb6825,
+    type: 3}
   canvasMaster: {fileID: 0}
   _isDebug: 0
   saveSystem:
@@ -587,6 +589,7 @@ MonoBehaviour:
   loadSaveData: 0
   checkpointLocation: {x: 0, y: 0, z: 0}
   yoyoMesh: {fileID: 7694847490876432402}
+  gameProgress: {fileID: 0}
 --- !u!114 &7915954509333265850
 MonoBehaviour:
   m_ObjectHideFlags: 0

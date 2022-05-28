@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
@@ -16,6 +17,16 @@ public class SaveSystem
             playerMasterRef.checkpointLocation.y, playerMasterRef.checkpointLocation.z);
         Debug.Log("CreateSaveGameObject");
         return saveData;
+    }
+
+    public ConceptArtData CreateConceptArtGameObject()
+    {
+        ConceptArtData artData = new ConceptArtData();
+        foreach(var item in playerMasterRef.gameProgress.conceptArtManager.unlockedConcepts)
+        {
+            artData.unlockedConcepts.Add(item.Key, item.Value);
+        }
+        return artData;
     }
 
     public void SaveCheckpoint()
@@ -44,6 +55,32 @@ public class SaveSystem
         Debug.Log("Não tem nenhum save para carregar!");
     }
 
+    public void SaveConceptArt()
+    {
+        ConceptArtData conceptArtData = CreateConceptArtGameObject();
+
+        BinaryFormatter bf = new BinaryFormatter();
+        FileStream file = File.Create(Application.persistentDataPath + "/unlockables.save");
+        bf.Serialize(file, conceptArtData);
+        file.Close();
+        Debug.Log(Application.persistentDataPath.ToString());
+
+    }
+
+    public ConceptArtData LoadConceptArt()
+    {
+        if (File.Exists(Application.persistentDataPath + "/unlockables.save"))
+        {
+            BinaryFormatter bf = new BinaryFormatter();
+            FileStream file = File.Open(Application.persistentDataPath + "/unlockables.save", FileMode.Open);
+            ConceptArtData conceptArtData = (ConceptArtData)bf.Deserialize(file);
+            file.Close();
+
+            return conceptArtData;
+        }
+        return null;
+    }
+
     public void DeleteSave()
     {
         if (File.Exists(Application.persistentDataPath + "/gamesave.save"))
@@ -69,4 +106,10 @@ public class CheckpointData
         y = _y;
         z = _z;
     }
+}
+
+[System.Serializable]
+public class ConceptArtData
+{ 
+    public Dictionary<string, bool> unlockedConcepts = new Dictionary<string, bool>();
 }
