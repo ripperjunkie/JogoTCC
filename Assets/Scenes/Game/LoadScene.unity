@@ -808,7 +808,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: ' POR FAVOR NAO FECHE O JOGO'
+  m_text: ' POR FAVOR NAO FECHE O JOGO.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0e539291673a7f641a1bdf5b2aac94a2, type: 2}
   m_sharedMaterial: {fileID: 646911996085734091, guid: 0e539291673a7f641a1bdf5b2aac94a2,
