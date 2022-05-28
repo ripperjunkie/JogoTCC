@@ -6,46 +6,53 @@ using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using TMPro;
 
-public class ButtonManager : MonoBehaviour, IPointerClickHandler, IPointerDownHandler, IPointerUpHandler, IPointerEnterHandler, IPointerExitHandler
+public class ButtonManager : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPointerEnterHandler, IPointerExitHandler
 {
     public TextMeshProUGUI text;
+    [Header("Color")]
     public Color onSelected;
     public Color onDeselected;
     public Color onHover;
     public Color onClick;
 
-    private void Start()
+    [Header("Shrink Effect")]
+    public bool shrinkEffect;
+    private float defaultTxtSize;
+    public float onHoverSizeTxt;
+    public float onClickSizeTxt;
+
+
+    private void Awake()
     {
         if(text)
         {
             onDeselected = text.color;
+            defaultTxtSize = text.fontSize;
         }
     }
 
-
-    public void OnPointerClick(PointerEventData eventData)
-    {        
-        SetTextColor(onClick);
-    }
-
     public void OnPointerDown(PointerEventData eventData)
-    {        
-
+    {
+        SetTextColor(onClick);
+        SetTextSize(onClickSizeTxt);
     }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
         SetTextColor(onHover);
+        SetTextSize(onHoverSizeTxt);
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {        
         SetTextColor(onDeselected);
+        SetTextSize(defaultTxtSize);
     }
 
     public void OnPointerUp(PointerEventData eventData)
     {        
         SetTextColor(onDeselected);
+        SetTextSize(defaultTxtSize);
     }
 
     private void SetTextColor(Color _color)
@@ -53,6 +60,15 @@ public class ButtonManager : MonoBehaviour, IPointerClickHandler, IPointerDownHa
         if(text)
         {
             text.color = _color;
+        }
+    }
+
+    private void SetTextSize(float _size)
+    {
+        if (!shrinkEffect) return;
+        if(text)
+        {
+            text.fontSize = _size;
         }
     }
 }
