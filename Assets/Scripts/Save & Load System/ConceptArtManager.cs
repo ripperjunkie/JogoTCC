@@ -41,16 +41,10 @@ public class ConceptArtManager : MonoBehaviour
         {
             foreach(var item in unlockedConcepts)
             {
-                print(item);
+              //  print(item);
             }
         }
        
-    }
-
-    [ContextMenu("Test")]
-    public void Test()
-    {
-        unlockedConcepts.Add("Idril", true);
     }
 
 

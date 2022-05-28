@@ -49,7 +49,7 @@ public class Inicial : MonoBehaviour
             StartCoroutine(EVolumeIncrease());
         }
         //chamando função para trocar a tela do menu
-        AnyButtonPressed();
+        //AnyButtonPressed();
         
     }
 

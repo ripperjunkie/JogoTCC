@@ -363,7 +363,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "OUR \nLAST\n HOPE"
+  m_text: "OUR \nLAST\nHOPE"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 55bf910fc1bb79a46ab27be3a1352a9a, type: 2}
   m_sharedMaterial: {fileID: -1274643758138878107, guid: 55bf910fc1bb79a46ab27be3a1352a9a,

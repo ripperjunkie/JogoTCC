@@ -9,9 +9,10 @@ public class MenuManager : MonoBehaviour
     private void Start()
     {
         Time.timeScale = 1.0f;
+        buttonPressedSound = GetComponent<AudioSource>();
     }
 
-    public void SfxClick()
+    public void PlayButtonSound()
     {
         buttonPressedSound.PlayOneShot(buttonPressedSound.clip);
     }
