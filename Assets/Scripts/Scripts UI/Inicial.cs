@@ -29,20 +29,27 @@ public class Inicial : MonoBehaviour
     void Update()
     {
         //mudar o valor e periodicamente atualiza-lo
-        if(mainMenu.active == true)
-        _AudioSource1.volume = _valueSlider;
-
-        if (primaryMenu.active == true)
+        if(mainMenu)
         {
-            _AudioSource2.volume = _valueSlider;
+            if (mainMenu.activeSelf)
+                _AudioSource1.volume = _valueSlider;
         }
+
+        if(primaryMenu)
+        {
+            if (primaryMenu.activeSelf)
+            {
+                _AudioSource2.volume = _valueSlider;
+            }
+        }
+
         //condição para aumentar o volume
         if (_valueSlider < limitMusicIncrease && _canIncrease)
         {
             StartCoroutine(EVolumeIncrease());
         }
         //chamando função para trocar a tela do menu
-        //AnyButtonPressed();
+        AnyButtonPressed();
         
     }
 
