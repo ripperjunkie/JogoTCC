@@ -80,7 +80,7 @@ public class DebugController : MonoBehaviour
     [CommandAttribute]
     public void God()
     {
-        print("God");
+        _playerMaster.godMode = !_playerMaster.godMode;
     }
 
     [CommandAttribute]

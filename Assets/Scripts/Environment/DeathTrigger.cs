@@ -9,7 +9,8 @@ public class DeathTrigger : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.CompareTag("Player"))
+        PlayerMaster player = other.GetComponent<PlayerMaster>();
+        if(player && !player.godMode)
         {
             FindObjectOfType<CanvasFadeAnimation>().PlayFadeOut();
         }

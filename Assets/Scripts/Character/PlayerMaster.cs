@@ -15,6 +15,7 @@ public class PlayerMaster : MonoBehaviour
 {
     public EMovementState movementState;
     public CharacterData characterData;
+    public bool godMode;
 
     [Header("Prefabs")]
     [SerializeField] private GameObject _canvasPrefab;
