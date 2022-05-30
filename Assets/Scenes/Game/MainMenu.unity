@@ -432,6 +432,8 @@ MonoBehaviour:
   shrinkEffect: 1
   onHoverSizeTxt: 35
   onClickSizeTxt: 25
+  shouldDeactivate: 0
+  alpha: 0
 --- !u!114 &92168598
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -914,6 +916,8 @@ MonoBehaviour:
   shrinkEffect: 1
   onHoverSizeTxt: 35
   onClickSizeTxt: 25
+  shouldDeactivate: 0
+  alpha: 0
 --- !u!114 &163632248
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1663,6 +1667,8 @@ MonoBehaviour:
   shrinkEffect: 1
   onHoverSizeTxt: 35
   onClickSizeTxt: 25
+  shouldDeactivate: 0
+  alpha: 0
 --- !u!1 &226754420
 GameObject:
   m_ObjectHideFlags: 0
@@ -2148,6 +2154,8 @@ MonoBehaviour:
   shrinkEffect: 0
   onHoverSizeTxt: 35
   onClickSizeTxt: 25
+  shouldDeactivate: 0
+  alpha: 0
 --- !u!114 &272421492
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3228,6 +3236,8 @@ MonoBehaviour:
   shrinkEffect: 1
   onHoverSizeTxt: 35
   onClickSizeTxt: 25
+  shouldDeactivate: 0
+  alpha: 0
 --- !u!114 &424170301
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3990,6 +4000,8 @@ MonoBehaviour:
   shrinkEffect: 1
   onHoverSizeTxt: 35
   onClickSizeTxt: 25
+  shouldDeactivate: 0
+  alpha: 0
 --- !u!114 &641574845
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4975,6 +4987,8 @@ MonoBehaviour:
   shrinkEffect: 1
   onHoverSizeTxt: 35
   onClickSizeTxt: 25
+  shouldDeactivate: 0
+  alpha: 0
 --- !u!114 &778243596
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5408,6 +5422,8 @@ MonoBehaviour:
   shrinkEffect: 1
   onHoverSizeTxt: 35
   onClickSizeTxt: 25
+  shouldDeactivate: 0
+  alpha: 0
 --- !u!114 &897391583
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5953,6 +5969,8 @@ MonoBehaviour:
   shrinkEffect: 1
   onHoverSizeTxt: 35
   onClickSizeTxt: 25
+  shouldDeactivate: 0
+  alpha: 0
 --- !u!114 &1045431316
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6164,6 +6182,8 @@ MonoBehaviour:
   shrinkEffect: 1
   onHoverSizeTxt: 35
   onClickSizeTxt: 25
+  shouldDeactivate: 0
+  alpha: 0
 --- !u!114 &1060595892
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7183,6 +7203,8 @@ MonoBehaviour:
   shrinkEffect: 1
   onHoverSizeTxt: 35
   onClickSizeTxt: 25
+  shouldDeactivate: 0
+  alpha: 0
 --- !u!114 &1158201949
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7538,6 +7560,8 @@ MonoBehaviour:
   shrinkEffect: 1
   onHoverSizeTxt: 35
   onClickSizeTxt: 25
+  shouldDeactivate: 0
+  alpha: 0
 --- !u!114 &1202422981
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8119,6 +8143,8 @@ MonoBehaviour:
   shrinkEffect: 1
   onHoverSizeTxt: 35
   onClickSizeTxt: 25
+  shouldDeactivate: 0
+  alpha: 0
 --- !u!114 &1229469159
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9504,6 +9530,8 @@ MonoBehaviour:
   shrinkEffect: 1
   onHoverSizeTxt: 35
   onClickSizeTxt: 25
+  shouldDeactivate: 1
+  alpha: 0.1
 --- !u!114 &1603540230
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9728,7 +9756,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Rafa LevelStreamingTest
+          m_StringArgument: J3
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1628516431
@@ -9789,6 +9817,8 @@ MonoBehaviour:
   shrinkEffect: 1
   onHoverSizeTxt: 35
   onClickSizeTxt: 25
+  shouldDeactivate: 0
+  alpha: 0
 --- !u!1 &1654924009
 GameObject:
   m_ObjectHideFlags: 0
@@ -10384,6 +10414,8 @@ MonoBehaviour:
   shrinkEffect: 1
   onHoverSizeTxt: 35
   onClickSizeTxt: 25
+  shouldDeactivate: 0
+  alpha: 0
 --- !u!1 &1699488343
 GameObject:
   m_ObjectHideFlags: 0
@@ -11102,6 +11134,8 @@ MonoBehaviour:
   shrinkEffect: 1
   onHoverSizeTxt: 35
   onClickSizeTxt: 25
+  shouldDeactivate: 0
+  alpha: 0
 --- !u!114 &1824606219
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11413,6 +11447,8 @@ MonoBehaviour:
   shrinkEffect: 1
   onHoverSizeTxt: 35
   onClickSizeTxt: 25
+  shouldDeactivate: 0
+  alpha: 0
 --- !u!114 &1857221002
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12139,6 +12175,8 @@ MonoBehaviour:
   shrinkEffect: 1
   onHoverSizeTxt: 35
   onClickSizeTxt: 25
+  shouldDeactivate: 1
+  alpha: 0.1
 --- !u!1 &1912222780
 GameObject:
   m_ObjectHideFlags: 0
@@ -12269,6 +12307,8 @@ MonoBehaviour:
   shrinkEffect: 1
   onHoverSizeTxt: 35
   onClickSizeTxt: 25
+  shouldDeactivate: 0
+  alpha: 0
 --- !u!114 &1967278871
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12448,6 +12488,8 @@ MonoBehaviour:
   shrinkEffect: 1
   onHoverSizeTxt: 35
   onClickSizeTxt: 25
+  shouldDeactivate: 0
+  alpha: 0
 --- !u!114 &1969468264
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13857,6 +13899,8 @@ MonoBehaviour:
   shrinkEffect: 1
   onHoverSizeTxt: 35
   onClickSizeTxt: 25
+  shouldDeactivate: 0
+  alpha: 0
 --- !u!114 &2112077678
 MonoBehaviour:
   m_ObjectHideFlags: 0

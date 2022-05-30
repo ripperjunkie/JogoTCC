@@ -81,6 +81,13 @@ public class SaveSystem
         return null;
     }
 
+    public bool CheckSaveExist()
+    {       
+        return File.Exists(Application.persistentDataPath + "/gamesave.save");
+    }
+
+
+
     public void DeleteSave()
     {
         if (File.Exists(Application.persistentDataPath + "/gamesave.save"))

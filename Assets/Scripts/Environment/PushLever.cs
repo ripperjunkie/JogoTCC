@@ -6,7 +6,7 @@ public class PushLever : MonoBehaviour
 {
 
     public float speedPlataform = 0;
-    public bool bOncolission = false;
+    private bool bOncolission = false;
     public bool active = false;
 
     

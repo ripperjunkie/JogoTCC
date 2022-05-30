@@ -697,7 +697,7 @@ GameObject:
   - component: {fileID: 2345995398289546730}
   - component: {fileID: 3163604269824502196}
   - component: {fileID: 4441797701542978986}
-  - component: {fileID: 4927117877651895147}
+  - component: {fileID: 8517602828327195581}
   m_Layer: 5
   m_Name: "Bot\xE3o Confirmar"
   m_TagString: Untagged
@@ -820,7 +820,7 @@ MonoBehaviour:
           m_StringArgument: MainMenu
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &4927117877651895147
+--- !u!114 &8517602828327195581
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -832,11 +832,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 852bbf531cfa7e646bbf895c48c50d44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  text: {fileID: 1567590055385970605}
-  onSelected: {r: 0.6839622, g: 0.8182267, b: 1, a: 1}
-  onDeselected: {r: 0.4, g: 0.654902, b: 1, a: 1}
-  onHover: {r: 0.7216981, g: 0.83993095, b: 1, a: 1}
-  onClick: {r: 0.4, g: 0.654902, b: 1, a: 1}
+  text: {fileID: 0}
+  onSelected: {r: 1, g: 1, b: 1, a: 1}
+  onDeselected: {r: 1, g: 1, b: 1, a: 1}
+  onHover: {r: 0.6431373, g: 0.6431373, b: 0.6431373, a: 1}
+  onClick: {r: 0.43529412, g: 0.43529412, b: 0.43529412, a: 1}
+  shrinkEffect: 1
+  onHoverSizeTxt: 55.8
+  onClickSizeTxt: 50
 --- !u!1 &5884958177772100898
 GameObject:
   m_ObjectHideFlags: 0
@@ -913,8 +916,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294944614
-  m_fontColor: {r: 0.4009434, g: 0.6534383, b: 1, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -985,7 +988,7 @@ GameObject:
   - component: {fileID: 6149037864181625445}
   - component: {fileID: 5139227786113602462}
   - component: {fileID: 2925716585160285975}
-  - component: {fileID: 865256274131565071}
+  - component: {fileID: 2404929365198706962}
   m_Layer: 5
   m_Name: "Bot\xE3o Continuar (1)"
   m_TagString: Untagged
@@ -1011,7 +1014,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 34, y: 139}
+  m_AnchoredPosition: {x: 34, y: -18}
   m_SizeDelta: {x: 366.146, y: 68.652}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!222 &6149037864181625445
@@ -1108,7 +1111,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &865256274131565071
+--- !u!114 &2404929365198706962
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1120,11 +1123,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 852bbf531cfa7e646bbf895c48c50d44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  text: {fileID: 5010871702263799953}
-  onSelected: {r: 0.6839622, g: 0.8182267, b: 1, a: 1}
-  onDeselected: {r: 0.4, g: 0.654902, b: 1, a: 1}
-  onHover: {r: 0.7216981, g: 0.83993095, b: 1, a: 1}
-  onClick: {r: 0.4, g: 0.654902, b: 1, a: 1}
+  text: {fileID: 0}
+  onSelected: {r: 1, g: 1, b: 1, a: 1}
+  onDeselected: {r: 1, g: 1, b: 1, a: 1}
+  onHover: {r: 0.6431373, g: 0.6431373, b: 0.6431373, a: 1}
+  onClick: {r: 0.43529412, g: 0.43529412, b: 0.43529412, a: 1}
+  shrinkEffect: 1
+  onHoverSizeTxt: 55.8
+  onClickSizeTxt: 50
 --- !u!1 &7194156810917355778
 GameObject:
   m_ObjectHideFlags: 0
@@ -1201,8 +1207,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294950285
-  m_fontColor: {r: 0.5518868, g: 0.7422617, b: 1, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1273,7 +1279,7 @@ GameObject:
   - component: {fileID: 6439075075181766255}
   - component: {fileID: 8302187218367441632}
   - component: {fileID: 8211691700091104983}
-  - component: {fileID: 5571023123504558115}
+  - component: {fileID: 8938707403566527315}
   m_Layer: 5
   m_Name: "Bot\xE3o Voltar"
   m_TagString: Untagged
@@ -1396,7 +1402,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &5571023123504558115
+--- !u!114 &8938707403566527315
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1408,11 +1414,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 852bbf531cfa7e646bbf895c48c50d44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  text: {fileID: 3396783065717263514}
-  onSelected: {r: 0.6839622, g: 0.8182267, b: 1, a: 1}
-  onDeselected: {r: 0.4, g: 0.654902, b: 1, a: 1}
-  onHover: {r: 0.7216981, g: 0.83993095, b: 1, a: 1}
-  onClick: {r: 0.4, g: 0.654902, b: 1, a: 1}
+  text: {fileID: 0}
+  onSelected: {r: 1, g: 1, b: 1, a: 1}
+  onDeselected: {r: 1, g: 1, b: 1, a: 1}
+  onHover: {r: 0.6431373, g: 0.6431373, b: 0.6431373, a: 1}
+  onClick: {r: 0.43529412, g: 0.43529412, b: 0.43529412, a: 1}
+  shrinkEffect: 1
+  onHoverSizeTxt: 55.8
+  onClickSizeTxt: 50
 --- !u!1 &7242550515237515170
 GameObject:
   m_ObjectHideFlags: 0
@@ -1504,7 +1513,7 @@ GameObject:
   - component: {fileID: 7859977833802735941}
   - component: {fileID: 7859977833802735940}
   - component: {fileID: 7859977833802735943}
-  - component: {fileID: 3694548803160203946}
+  - component: {fileID: 8326306071472056235}
   m_Layer: 5
   m_Name: "Bot\xE3o MenuPrincipal"
   m_TagString: Untagged
@@ -1530,7 +1539,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 34, y: -46}
+  m_AnchoredPosition: {x: 34, y: -203}
   m_SizeDelta: {x: 366.146, y: 68.652}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!222 &7859977833802735941
@@ -1627,7 +1636,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
---- !u!114 &3694548803160203946
+--- !u!114 &8326306071472056235
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1639,11 +1648,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 852bbf531cfa7e646bbf895c48c50d44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  text: {fileID: 7859977834192876231}
-  onSelected: {r: 0.6839622, g: 0.8182267, b: 1, a: 1}
-  onDeselected: {r: 0.4, g: 0.654902, b: 1, a: 1}
-  onHover: {r: 0.7216981, g: 0.83993095, b: 1, a: 1}
-  onClick: {r: 0.4, g: 0.654902, b: 1, a: 1}
+  text: {fileID: 0}
+  onSelected: {r: 1, g: 1, b: 1, a: 1}
+  onDeselected: {r: 1, g: 1, b: 1, a: 1}
+  onHover: {r: 0.6431373, g: 0.6431373, b: 0.6431373, a: 1}
+  onClick: {r: 0.43529412, g: 0.43529412, b: 0.43529412, a: 1}
+  shrinkEffect: 1
+  onHoverSizeTxt: 55.8
+  onClickSizeTxt: 50
 --- !u!1 &7859977834102019327
 GameObject:
   m_ObjectHideFlags: 0
@@ -1720,8 +1732,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294944614
-  m_fontColor: {r: 0.4009434, g: 0.6534383, b: 1, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1754,7 +1766,7 @@ MonoBehaviour:
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 1
+  m_enableWordWrapping: 0
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}
@@ -1815,8 +1827,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 34, y: -56}
-  m_SizeDelta: {x: 628.72, y: 127.136}
+  m_AnchoredPosition: {x: 34, y: -12}
+  m_SizeDelta: {x: 292.5127, y: 268.14}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &7859977834107479975
 CanvasRenderer:
@@ -1846,18 +1858,18 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: FAKE FACE
+  m_text: OUR LAST HOPE
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 6f74528b81f3ad74a953c45e4fd800d8, type: 2}
-  m_sharedMaterial: {fileID: 2301108879932578988, guid: 6f74528b81f3ad74a953c45e4fd800d8,
+  m_fontAsset: {fileID: 11400000, guid: 55bf910fc1bb79a46ab27be3a1352a9a, type: 2}
+  m_sharedMaterial: {fileID: -1274643758138878107, guid: 55bf910fc1bb79a46ab27be3a1352a9a,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294931213
-  m_fontColor: {r: 0.05098039, g: 0.45096385, b: 1, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1874,8 +1886,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 92.4
-  m_fontSizeBase: 92.4
+  m_fontSize: 82.22
+  m_fontSizeBase: 82.22
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1992,8 +2004,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294944614
-  m_fontColor: {r: 0.4009434, g: 0.6534383, b: 1, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -2026,7 +2038,7 @@ MonoBehaviour:
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 1
+  m_enableWordWrapping: 0
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}
@@ -2269,10 +2281,10 @@ GameObject:
   - component: {fileID: 7859977834852637092}
   - component: {fileID: 7859977834852637095}
   - component: {fileID: 7859977834852637094}
-  - component: {fileID: 1575291381864706280}
+  - component: {fileID: 1740641750128948146}
   m_Layer: 5
   m_Name: "Bot\xE3o Continuar"
-  m_TagString: Untagged
+  m_TagString: '#FFFFFF'
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2295,7 +2307,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 34, y: 227}
+  m_AnchoredPosition: {x: 34, y: 70}
   m_SizeDelta: {x: 366.146, y: 68.652}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!222 &7859977834852637092
@@ -2392,7 +2404,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &1575291381864706280
+--- !u!114 &1740641750128948146
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2404,11 +2416,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 852bbf531cfa7e646bbf895c48c50d44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  text: {fileID: 7859977834102019325}
-  onSelected: {r: 0.6839622, g: 0.8182267, b: 1, a: 1}
-  onDeselected: {r: 0.4, g: 0.654902, b: 1, a: 1}
-  onHover: {r: 0.7216981, g: 0.83993095, b: 1, a: 1}
-  onClick: {r: 0.4, g: 0.654902, b: 1, a: 1}
+  text: {fileID: 0}
+  onSelected: {r: 1, g: 1, b: 1, a: 1}
+  onDeselected: {r: 1, g: 1, b: 1, a: 1}
+  onHover: {r: 0.6431373, g: 0.6431373, b: 0.6431373, a: 1}
+  onClick: {r: 0.43529412, g: 0.43529412, b: 0.43529412, a: 1}
+  shrinkEffect: 1
+  onHoverSizeTxt: 55.8
+  onClickSizeTxt: 50
 --- !u!1 &7859977834897970304
 GameObject:
   m_ObjectHideFlags: 0
@@ -2421,7 +2436,7 @@ GameObject:
   - component: {fileID: 7859977834897970308}
   - component: {fileID: 7859977834897970311}
   - component: {fileID: 7859977834897970310}
-  - component: {fileID: 1559077746340289907}
+  - component: {fileID: 9069483703628563388}
   m_Layer: 5
   m_Name: "Bot\xE3o Reiniciar"
   m_TagString: Untagged
@@ -2447,7 +2462,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 34, y: 47}
+  m_AnchoredPosition: {x: 34, y: -110}
   m_SizeDelta: {x: 366.146, y: 68.652}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!222 &7859977834897970308
@@ -2544,7 +2559,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &1559077746340289907
+--- !u!114 &9069483703628563388
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2556,11 +2571,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 852bbf531cfa7e646bbf895c48c50d44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  text: {fileID: 7859977834927642561}
-  onSelected: {r: 0.6839622, g: 0.8182267, b: 1, a: 1}
-  onDeselected: {r: 0.4, g: 0.654902, b: 1, a: 1}
-  onHover: {r: 0.7216981, g: 0.83993095, b: 1, a: 1}
-  onClick: {r: 0.4, g: 0.654902, b: 1, a: 1}
+  text: {fileID: 0}
+  onSelected: {r: 1, g: 1, b: 1, a: 1}
+  onDeselected: {r: 1, g: 1, b: 1, a: 1}
+  onHover: {r: 0.6431373, g: 0.6431373, b: 0.6431373, a: 1}
+  onClick: {r: 0.43529412, g: 0.43529412, b: 0.43529412, a: 1}
+  shrinkEffect: 1
+  onHoverSizeTxt: 55.8
+  onClickSizeTxt: 50
 --- !u!1 &7859977834927642563
 GameObject:
   m_ObjectHideFlags: 0
@@ -2637,8 +2655,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294944614
-  m_fontColor: {r: 0.4009434, g: 0.6534383, b: 1, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -2671,7 +2689,7 @@ MonoBehaviour:
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 1
+  m_enableWordWrapping: 0
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}
@@ -2981,8 +2999,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294944614
-  m_fontColor: {r: 0.4009434, g: 0.6534383, b: 1, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -3117,8 +3135,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294944614
-  m_fontColor: {r: 0.4009434, g: 0.6534383, b: 1, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -3151,7 +3169,7 @@ MonoBehaviour:
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 1
+  m_enableWordWrapping: 0
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}

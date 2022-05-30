@@ -1,10 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using TMPro;
+
 
 public class ButtonManager : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPointerEnterHandler, IPointerExitHandler
 {
@@ -21,10 +19,28 @@ public class ButtonManager : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
     public float onHoverSizeTxt;
     public float onClickSizeTxt;
 
+    public bool shouldDeactivate;
 
+    private Button _button;
+    public float alpha;
     private void Awake()
     {
-        if(text)
+        _button = GetComponent<Button>();
+        GameProgress gameProgress = FindObjectOfType<GameProgress>();
+        if(gameProgress && shouldDeactivate)
+        {
+            _button.interactable = gameProgress.saveSystem.CheckSaveExist();
+            if(!gameProgress.saveSystem.CheckSaveExist())
+            {
+                text.alpha = alpha;
+                return;
+            }
+        }
+
+
+
+        text = GetComponentInChildren<TextMeshProUGUI>();
+        if (text)
         {
             onDeselected = text.color;
             defaultTxtSize = text.fontSize;
@@ -57,6 +73,9 @@ public class ButtonManager : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
 
     private void SetTextColor(Color _color)
     {
+        if (!_button.IsInteractable())
+            return;
+
         if(text)
         {
             text.color = _color;
@@ -65,7 +84,7 @@ public class ButtonManager : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
 
     private void SetTextSize(float _size)
     {
-        if (!shrinkEffect) return;
+        if (!shrinkEffect || !_button.IsInteractable()) return;
         if(text)
         {
             text.fontSize = _size;
