@@ -48,6 +48,7 @@ MonoBehaviour:
   saveSystem:
     playerMasterRef: {fileID: 0}
   conceptArtManager: {fileID: 0}
+  shouldLoadSave: 1
 --- !u!114 &7546861194604698224
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -60,5 +61,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 001a2a34d5c8c1b4cb7da529aa700e01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  artPanel: {fileID: 0}
   debug: 1
   loadSave: 1

@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -9,7 +8,6 @@ public enum ECollectibe
     TABLE,
     PENCIL
 }
-
 
 public class PlayerMaster : MonoBehaviour
 {
@@ -60,14 +58,15 @@ public class PlayerMaster : MonoBehaviour
                 canvasMaster = canvas;
             }
         }
+
         if(_gameProgressPrefab)
         {
             GameObject go = Instantiate(_gameProgressPrefab);
             if(go.GetComponent<GameProgress>() != null)
             {
                 gameProgress = go.GetComponent<GameProgress>();
+                loadSaveData = GameProgress.shouldLoadSave;
             }
-
         }
 
     }

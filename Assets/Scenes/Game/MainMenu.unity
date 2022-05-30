@@ -4300,8 +4300,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 452984831
+  m_fontColor: {r: 1, g: 1, b: 1, a: 0.101960786}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -6543,7 +6543,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1084741392
 GameObject:
@@ -8269,7 +8269,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1276489725
 MonoBehaviour:
@@ -9530,7 +9530,7 @@ MonoBehaviour:
   shrinkEffect: 1
   onHoverSizeTxt: 35
   onClickSizeTxt: 25
-  shouldDeactivate: 1
+  shouldDeactivate: 0
   alpha: 0.1
 --- !u!114 &1603540230
 MonoBehaviour:
@@ -9571,7 +9571,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 1603540231}
   m_OnClick:
     m_PersistentCalls:
@@ -9749,6 +9749,18 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1348543005}
         m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
+        m_MethodName: NewGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1348543005}
+        m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
         m_MethodName: ChangeScene
         m_Mode: 5
         m_Arguments:
@@ -9756,7 +9768,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: J3
+          m_StringArgument: Rafa LevelStreamingTest
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1628516431
@@ -12105,6 +12117,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 1348543005}
+        m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
+        m_MethodName: LoadGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 1348543005}
         m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
         m_MethodName: PlayButtonSound
@@ -14555,7 +14579,7 @@ PrefabInstance:
     - target: {fileID: 7546861194604698230, guid: 8310acf0ed740ad49a256a8779bb6825,
         type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7546861194604698230, guid: 8310acf0ed740ad49a256a8779bb6825,
         type: 3}

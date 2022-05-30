@@ -37,8 +37,6 @@ public class ButtonManager : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
             }
         }
 
-
-
         text = GetComponentInChildren<TextMeshProUGUI>();
         if (text)
         {

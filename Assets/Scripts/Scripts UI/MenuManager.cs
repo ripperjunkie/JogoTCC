@@ -5,6 +5,12 @@ using UnityEngine.SceneManagement;
 public class MenuManager : MonoBehaviour
 {
     public AudioSource buttonPressedSound;
+    private GameProgress _gameProgress;
+
+    private void Awake()
+    {
+        _gameProgress = FindObjectOfType<GameProgress>();
+    }
 
     private void Start()
     {
@@ -20,4 +26,16 @@ public class MenuManager : MonoBehaviour
     {
         SceneManager.LoadScene(_sceneName);
     }
+
+    public void NewGame()
+    {
+        GameProgress.shouldLoadSave = false;
+    }
+
+    public void LoadGame()
+    {
+        GameProgress.shouldLoadSave = true;
+    }
+
+
 }
