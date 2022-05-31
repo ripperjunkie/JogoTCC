@@ -14,6 +14,11 @@ public class PauseMenu : MonoBehaviour
         _playerMaster = GetComponent<PlayerMaster>();
     }
 
+    private void OnDestroy()
+    {
+        isGamePaused = false;
+    }
+
     private void Update()
     {
         if(Input.GetKeyDown(KeyCode.Escape))
@@ -36,7 +41,6 @@ public class PauseMenu : MonoBehaviour
         {
             return;
         }
-
 
         isGamePaused = true;
         Time.timeScale = 0f;
