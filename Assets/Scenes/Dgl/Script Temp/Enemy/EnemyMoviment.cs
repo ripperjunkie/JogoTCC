@@ -53,7 +53,7 @@ public class EnemyMoviment : MonoBehaviour
         distanciaPlayer = Vector3.Distance(player.transform.position, transform.position);
         if (distanciaPlayer < minDistance)
         {
-
+            player.GetComponent<PlayerMaster>().Die();
         }
         if (distanciaPlayer < maxDistanceToChasing)
         {
