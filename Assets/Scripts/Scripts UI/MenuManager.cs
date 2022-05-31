@@ -16,6 +16,7 @@ public class MenuManager : MonoBehaviour
     {
         Time.timeScale = 1.0f;
         buttonPressedSound = GetComponent<AudioSource>();
+        print(Application.persistentDataPath);
     }
 
     public void PlayButtonSound()

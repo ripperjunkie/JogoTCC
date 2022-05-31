@@ -4,6 +4,7 @@ using System.Reflection;
 using System.Linq;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
+using System.IO;
 
 //https://www.youtube.com/watch?v=vLKeqS1PeTU (usado como referencia)
 
@@ -100,6 +101,12 @@ public class DebugController : MonoBehaviour
     public void Slomo(float _timeSpeed)
     {
         Time.timeScale = _timeSpeed;
+    }
+
+    [CommandAttribute]
+    public void DeleteSave()
+    {
+        File.Delete(Application.persistentDataPath + "/gamesave.save");
     }
 
 #endregion

@@ -7,7 +7,7 @@ using UnityEngine;
 public class SaveSystem
 {
     public PlayerMaster playerMasterRef;
-
+    public string[] slot = new string[3];
 
     //create save game object
     public SaveData CreateSaveGameObject()

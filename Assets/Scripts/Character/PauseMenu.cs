@@ -32,6 +32,12 @@ public class PauseMenu : MonoBehaviour
     [ContextMenu("Pause")]
     public void Pause()
     {
+        if (_playerMaster.canvasMaster.pausePanel.activeSelf)
+        {
+            return;
+        }
+
+
         isGamePaused = true;
         Time.timeScale = 0f;
         Cursor.visible = true;
@@ -46,6 +52,8 @@ public class PauseMenu : MonoBehaviour
     [ContextMenu("Unpause")]
     public void Unpause()
     {
+        if (!_playerMaster.canvasMaster.pausePanel.activeSelf)
+            return;
         isGamePaused = false;
         Time.timeScale = 1f;
         Cursor.visible = false;
