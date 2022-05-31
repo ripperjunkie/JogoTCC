@@ -234,4 +234,12 @@ public class PlayerMaster : MonoBehaviour
             }
         }
     }
+
+    public void Die()
+    {
+        if(!godMode)
+        {
+            FindObjectOfType<CanvasFadeAnimation>().PlayFadeOut();
+        }
+    }
 }
