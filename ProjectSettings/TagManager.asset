@@ -17,6 +17,7 @@ TagManager:
   - SoundBox
   - Elevator2
   - EndLevel
+  - '#FFFFFF'
   layers:
   - Default
   - TransparentFX
@@ -26,7 +27,7 @@ TagManager:
   - UI
   - Bridge
   - Player
-  - 
+  - Wall
   - 
   - 
   - 
