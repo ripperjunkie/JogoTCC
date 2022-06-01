@@ -42,9 +42,8 @@ public class CharacterMovement : MonoBehaviour
     private void FixedUpdate()
     {
         Movement();
-#if DEVELOPMENT_BUILD || UNITY_EDITOR
         FlyMovement();
-#endif
+
         if (debugParams)
         {
             print("Hit ground? " + HitGround());
@@ -80,22 +79,15 @@ public class CharacterMovement : MonoBehaviour
         }
     }
 
-    //DEBUG ONLY!
-#if DEVELOPMENT_BUILD || UNITY_EDITOR
     private void FlyMovement()
     {
         if (!DebugController.flyMode) return;
 
-        print("fly movement ");
         Rigidbody rb = GetComponent<Rigidbody>();
         float verticalAxis = Input.GetAxisRaw("Fly");
-        print(verticalAxis);
-
         if(rb)
             rb.velocity = Vector3.up * currentSpeed * verticalAxis;
     }
-
-#endif
 
     public bool HitGround()
     {

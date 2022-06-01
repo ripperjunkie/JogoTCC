@@ -29,9 +29,7 @@ public class DebugController : MonoBehaviour
 
     private void Update()
     {
-#if DEVELOPMENT_BUILD || UNITY_EDITOR
         if (Input.GetKeyDown(KeyCode.Tab)) OnToggleDebug();
-#endif
     }
 
     private void FindAndRegisterAttributes()
