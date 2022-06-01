@@ -38,5 +38,10 @@ public class MenuManager : MonoBehaviour
         GameProgress.shouldLoadSave = true;
     }
 
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
+
 
 }

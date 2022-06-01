@@ -15,16 +15,8 @@ public class ScreamShot : MonoBehaviour
         myCamera = GetComponent<Camera>();
     }
 
-    //private void Update()
-    //{
-    //    if (Input.GetKeyDown(KeyCode.F))
-    //    {
-    //        TakeShot();
-    //    }
-    //}
-    void OnPostRender()
+    private void OnPostRender()
     {
-        //if (takeSreenshotOnNextFrame && controllPhoto.photografoMode )
         if (takeScreenShotOnNextFrame)
         {
             takeScreenShotOnNextFrame = false;
@@ -49,7 +41,7 @@ public class ScreamShot : MonoBehaviour
           
             RenderTexture.ReleaseTemporary(renderTexture);
             myCamera.targetTexture = null;
-            Debug.Log("gravou");
+            //Debug.Log("gravou");
 
         }
     }
@@ -58,11 +50,11 @@ public class ScreamShot : MonoBehaviour
     {
         myCamera.targetTexture = RenderTexture.GetTemporary(Screen.width, Screen.height, 16);
         takeScreenShotOnNextFrame = true;
-        Debug.Log("bateu foto");
+        //Debug.Log("bateu foto");
         StartCoroutine(RecordFrame());
     }
 
-    IEnumerator RecordFrame()
+    private IEnumerator RecordFrame()
     {
         yield return new WaitForEndOfFrame();
         if (takeScreenShotOnNextFrame)
@@ -77,7 +69,7 @@ public class ScreamShot : MonoBehaviour
             rendeResult.ReadPixels(rect, 0, 0);
             byte[] bytes = rendeResult.EncodeToPNG();
 
-            Debug.Log("foto salva");
+            //Debug.Log("foto salva");
 
             fotoTex = new Texture2D(10, 10);
             fotoTex.LoadImage(bytes);
@@ -89,7 +81,7 @@ public class ScreamShot : MonoBehaviour
 
             RenderTexture.ReleaseTemporary(renderTexture);
             myCamera.targetTexture = null;
-            Debug.Log("gravou");
+           // Debug.Log("gravou");
 
         }
     }

@@ -1,12 +1,10 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SongManager : MonoBehaviour
 {
     public AudioClip firstSong;
-
-    private AudioSource song01, song02;
+    private AudioSource audioSource;
     private bool isPlayingSong01;
 
     public static SongManager instance;
@@ -14,13 +12,11 @@ public class SongManager : MonoBehaviour
     private void Awake()
     {
         if (instance == null) instance = this;
+        audioSource = GetComponent<AudioSource>();
     }
     private void Start()
     {
-        song01 = gameObject.AddComponent<AudioSource>();
-        song02 = gameObject.AddComponent<AudioSource>();
         isPlayingSong01 = true;
-
         StartCoroutine(EFirstSong());
     }
     public void ChangeSong(AudioClip _newClip1)
@@ -36,32 +32,32 @@ public class SongManager : MonoBehaviour
 
         if (isPlayingSong01)
         {
-            song02.clip = _newClip;
-            song02.Play();
+            audioSource.clip = _newClip;
+            audioSource.Play();
 
             while(currentTimer < fadeOutTimer)
             {
-                song02.volume = Mathf.Lerp(0, 0.8f, currentTimer / fadeOutTimer);
-                song01.volume = Mathf.Lerp(0.8f, 0, currentTimer / fadeOutTimer);
+                audioSource.volume = Mathf.Lerp(0, 0.8f, currentTimer / fadeOutTimer);
+                audioSource.volume = Mathf.Lerp(0.8f, 0, currentTimer / fadeOutTimer);
                // Debug.Log(currentTimer);
                 currentTimer += Time.deltaTime;
                 yield return null;
             }
             
-            song01.Stop();
+            audioSource.Stop();
         }
         else
         {
-            song01.clip = _newClip;
-            song01.Play();
+            audioSource.clip = _newClip;
+            audioSource.Play();
             while (currentTimer < fadeOutTimer)
             {
-                song01.volume = Mathf.Lerp(0, 0.8f, currentTimer / fadeOutTimer);
-                song02.volume = Mathf.Lerp(0.8f, 0, currentTimer / fadeOutTimer);
+                audioSource.volume = Mathf.Lerp(0, 0.8f, currentTimer / fadeOutTimer);
+                audioSource.volume = Mathf.Lerp(0.8f, 0, currentTimer / fadeOutTimer);
                 currentTimer += Time.deltaTime;
                 yield return null;
             }
-            song02.Stop();
+            audioSource.Stop();
         }
     }
     private IEnumerator EFirstSong()
