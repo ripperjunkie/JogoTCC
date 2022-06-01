@@ -21,7 +21,7 @@ public class SongManager : MonoBehaviour
         song02 = gameObject.AddComponent<AudioSource>();
         isPlayingSong01 = true;
 
-        ChangeSong(firstSong);
+        StartCoroutine(EFirstSong());
     }
     public void ChangeSong(AudioClip _newClip1)
     {
@@ -56,12 +56,17 @@ public class SongManager : MonoBehaviour
             song01.Play();
             while (currentTimer < fadeOutTimer)
             {
-                song01.volume = Mathf.Lerp(0, 1, currentTimer / fadeOutTimer);
-                song02.volume = Mathf.Lerp(1, 0, currentTimer / fadeOutTimer);
+                song01.volume = Mathf.Lerp(0, 0.8f, currentTimer / fadeOutTimer);
+                song02.volume = Mathf.Lerp(0.8f, 0, currentTimer / fadeOutTimer);
                 currentTimer += Time.deltaTime;
                 yield return null;
             }
             song02.Stop();
         }
+    }
+    private IEnumerator EFirstSong()
+    {
+        yield return new WaitForSeconds(2.2f);
+        ChangeSong(firstSong);
     }
 }
