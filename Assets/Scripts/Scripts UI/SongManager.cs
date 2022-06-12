@@ -37,14 +37,14 @@ public class SongManager : MonoBehaviour
 
             while(currentTimer < fadeOutTimer)
             {
-                audioSource.volume = Mathf.Lerp(0, 0.8f, currentTimer / fadeOutTimer);
-                audioSource.volume = Mathf.Lerp(0.8f, 0, currentTimer / fadeOutTimer);
+                audioSource.volume = Mathf.Lerp(1f, 0, currentTimer / fadeOutTimer);
+                audioSource.volume = Mathf.Lerp(0, 1f, currentTimer / fadeOutTimer);
                // Debug.Log(currentTimer);
                 currentTimer += Time.deltaTime;
                 yield return null;
             }
             
-            audioSource.Stop();
+            //audioSource.Stop();
         }
         else
         {
@@ -52,12 +52,12 @@ public class SongManager : MonoBehaviour
             audioSource.Play();
             while (currentTimer < fadeOutTimer)
             {
-                audioSource.volume = Mathf.Lerp(0, 0.8f, currentTimer / fadeOutTimer);
-                audioSource.volume = Mathf.Lerp(0.8f, 0, currentTimer / fadeOutTimer);
+                audioSource.volume = Mathf.Lerp(1f, 0, currentTimer / fadeOutTimer);
+                audioSource.volume = Mathf.Lerp(0, 1f, currentTimer / fadeOutTimer);
                 currentTimer += Time.deltaTime;
                 yield return null;
             }
-            audioSource.Stop();
+            //audioSource.Stop();
         }
     }
     private IEnumerator EFirstSong()
