@@ -10,8 +10,9 @@ public class MoveObjects : MonoBehaviour
     private float _speedPlayer = 0;
     private float _speedInitial = 0;
     private Vector3 _forceD;
+    private Vector3 _forceG;
     public bool active = false;
-    private FixedJoint _fixedJ = null;
+    private ConfigurableJoint _fixedJ = null;
     private Animator _animator = null;
     public AudioSource _audio = null;
     private float _lerpRigidSpeed = 1f;
@@ -23,7 +24,7 @@ public class MoveObjects : MonoBehaviour
         _player = GameObject.Find("PlayerMaster");
         _speedInitial = _player.GetComponent<CharacterMovement>().currentSpeed;
         _animator = _player.GetComponentInChildren<Animator>();
-        _fixedJ = GetComponent<FixedJoint>();
+        _fixedJ = GetComponent<ConfigurableJoint>();
         _audio = GetComponent<AudioSource>();
     }
 
@@ -37,7 +38,6 @@ public class MoveObjects : MonoBehaviour
         if (active)
         {
             _forceD = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
-            _rBBox.WakeUp();
             _forceD.y = 0;
             _forceD.Normalize();
             Vector3 dir = transform.position - _player.transform.position;
@@ -59,9 +59,8 @@ public class MoveObjects : MonoBehaviour
         }
         else
         {
-            _rBBox.Sleep();
-            // _player.transform.LookAt(null);
             _fixedJ.connectedBody = null;
         }
     }
+
 }
